@@ -38,7 +38,7 @@ function twitter($keyword) {
     return $result;
 }
 function instainfo($keyword) {
-    $uri = "https://farzain.xyz/api/ig_profile.php?id=";
+    $uri = "https://farzain.com/api/ig_profile.php?id=" . $keyword . "&apikey=odu7493747dundjdjd";
     $response = Unirest\Request::get("$uri");
     $json = json_decode($response->raw_body, true);
     $parsed['poto']      = $json['info']['profile_pict'];
