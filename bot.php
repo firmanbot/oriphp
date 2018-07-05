@@ -4,8 +4,8 @@ just for fun
 */
 require_once('./line_class.php');
 require_once('./unirest-php-master/src/Unirest.php');
-$channelAccessToken = '0VAtu41w6RxgSB9BmXgRLUMLDD4miTkCAmk+d1Bwb4Zzb1H+IY4jvNdlLC6QOYfkRSisYgAenzGdBu/JcZusk1Qyn23vPR7z9FPAqIPIeUpoN6UPCoPzgBt3xzQIR6mYrqMZ8JCOU89XOGb8EIPwngdB04t89/1O/w1cDnyilFU='; //sesuaikan
-$channelSecret = '3c386c08687962915e806b5922d39866';//sesuaikan
+$channelAccessToken = '38MKMPW18ztQ/x6q98qtSQNidQJwBnRY00QJJMb/AbOw5Bv42+Otp33ly8etCWXiT8bgTPXRnSwf1/0mo/PEijrYgL3IsegmgZ1HjvGRhqHcLq2LuUpnf5uSGXUaXVF7zM0tTZ2ZO2X3Eg6D8ijZgwdB04t89/1O/w1cDnyilFU='; //sesuaikan
+$channelSecret = 'db9ff33196397121d8271987dda3966b';//sesuaikan
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 $userId 	= $client->parseEvents()[0]['source']['userId'];
 $groupId 	= $client->parseEvents()[0]['source']['groupId'];
@@ -26,13 +26,6 @@ if (count($pesan_datang) > 2) {
     }
 }
 #-------------------------[Function]-------------------------#
-function simi($keyword) {
-    $uri = "https://corrykalam.gq/simi.php?text=" . $keyword;
-    $response = Unirest\Request::get("$uri");
-    $json = json_decode($response->raw_body, true);
-    $result = $json["answer"];
-    return $result;
-}
 function twitter($keyword) {
     $uri = "https://farzain.xyz/api/twitter.php?apikey=9YzAAXsDGYHWFRf6gWzdG5EQECW7oo&id=";
     $response = Unirest\Request::get("$uri");
