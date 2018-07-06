@@ -430,53 +430,6 @@ if ($type == 'join') {
     );
 }
 //show menu, saat join dan command /menu
-if ($command == '/menu') {
-    $balas = array(
-        'replyToken' => $replyToken,
-        'messages' => array(
-		array (
-  			'type' => 'template',
-  			'altText' => 'This is a buttons template',
-  			'template' => 
-  			array (
-    				'type' => 'buttons',
-    				'thumbnailImageUrl' => 'https://i.imgur.com/vNZlfOA.jpg',
-    				'imageAspectRatio' => 'rectangle',
-    				'imageSize' => 'cover',
-    				'imageBackgroundColor' => '#FFFFFF',
-    				'title' => 'Menu',
-    				'text' => 'Please select',
-    				'defaultAction' => 
-    				array (
-      					'type' => 'uri',
-      					'label' => 'View detail',
-      					'uri' => 'http://example.com/page/123',
-    				),
-    				'actions' => 
-    				array (
-      				  0 => 
-     				  array (
-        				'type' => 'postback',
-        				'label' => 'Buy',
-        				'data' => 'action=buy&itemid=123',
-      				  ),
-      				  1 => 
-      				  array (
-        				'type' => 'postback',
-        				'label' => 'Add to cart',
-        				'data' => 'action=add&itemid=123',
-      				  ),
-      				  2 => 
-      				  array (
-        				'type' => 'uri',
-        				'label' => 'View detail',
-        				'uri' => 'http://example.com/page/123',
-      				  ),
-    			),
-  		),
-	)
-    ),
-}
 //fitur googlemap
 if($message['type']=='text') {
 	    if ($command == '/location' || $command == '/Location') {
