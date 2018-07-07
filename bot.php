@@ -554,32 +554,28 @@ if($message['type']=='text') {
 }
 if($message['type']=='text') {
 	    if ($command == '/manga') {
-        $result = manga($options);
-        $altText = "Title : " . $result['title'];
-        $altText .= "\n\n" . $result['desc'];
-        $altText .= "\nMAL Page : https://myanimelist.net/manga/" . $result['id'];
+        $altText = "Title : "
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
                 array(
                     'type' => 'template',
-                    'altText' => $altText,
+                    'altText' => 'test',
                     'template' => array(
                         'type' => 'buttons',
-                        'title' => $result['title'],
-                        'thumbnailImageUrl' => $result['image'],
-                        'text' => $result['desc'],
+                        'title' => 'sks',
+                        'text' => 'sss',
                         'actions' => array(
                             array(
                                 'type' => 'postback',
                                 'label' => 'Baca Sinopsis-nya',
                                 'data' => 'action=add&itemid=123',
-                                'text' => '/manga-syn' . $options
+                                'text' => '/manga-syn'
                             ),
                             array(
                                 'type' => 'uri',
                                 'label' => 'Website MAL',
-                                'uri' => 'https://myanimelist.net/manga/' . $result['id']
+                                'uri' => 'https://myanimelist.net/manga/'
                             )
                         )
                     )
