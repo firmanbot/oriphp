@@ -438,7 +438,7 @@ if ($type == 'join') {
     );
 }
 if($message['type']=='text') {
-	if ($command == '/cuaca') {
+    if ($command == '/cuaca') {
         $result = cuaca($options);
         $balas = array(
             'replyToken' => $replyToken,
