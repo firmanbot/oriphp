@@ -553,7 +553,7 @@ if($message['type']=='text') {
     }
 }
 if($message['type']=='text') {
-	    if ($command == '/manga') {
+    if ($command == '/manga') {
         $altText = "Title : "
         $balas = array(
             'replyToken' => $replyToken,
@@ -567,15 +567,14 @@ if($message['type']=='text') {
                         'text' => 'sss',
                         'actions' => array(
                             array(
-                                'type' => 'postback',
+                                'type' => 'message',
                                 'label' => 'Baca Sinopsis-nya',
-                                'data' => 'action=add&itemid=123',
-                                'text' => '/manga-syn'
+                                'text' => 'asssa'
                             ),
                             array(
                                 'type' => 'uri',
                                 'label' => 'Website MAL',
-                                'uri' => 'https://myanimelist.net/manga/'
+                                'uri' => 'https://myanimelist.net'
                             )
                         )
                     )
