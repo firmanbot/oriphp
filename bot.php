@@ -4,8 +4,8 @@ just for fun
 */
 require_once('./line_class.php');
 require_once('./unirest-php-master/src/Unirest.php');
-$channelAccessToken = 'pm+pwaVusRIVFAXcFUb3Kt6XAEiS1Zyyfuztxw41ZKooasW4oLWrgdLFwwaEis1zT8bgTPXRnSwf1/0mo/PEijrYgL3IsegmgZ1HjvGRhqHH0+ipE3q+/SpgRzYMrUrnDgVITGAdxSELajCOpZ8SzwdB04t89/1O/w1cDnyilFU='; //sesuaikan
-$channelSecret = 'db9ff33196397121d8271987dda3966b';//sesuaikan
+$channelAccessToken = 'PKyDp5jNMBfZeN5n8AC4ut1yAi2xsgkyM6pWr+yURTAPv1qZjXfxnsjFwidAVh1x+HwgBEvUmtC88xQI5Ub21dkkqC1g5Yk112KAzBTCh2Kj8ps5wKemOWkq+fqH0yjDX76K8wpISUZAELGuDjGtuwdB04t89/1O/w1cDnyilFU='; //sesuaikan
+$channelSecret = 'f2b2cfef25d5ac12ae0579f43896639d';//sesuaikan
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 $userId 	= $client->parseEvents()[0]['source']['userId'];
 $groupId 	= $client->parseEvents()[0]['source']['groupId'];
@@ -26,6 +26,13 @@ if (count($pesan_datang) > 2) {
     }
 }
 #-------------------------[Function]-------------------------#
+function simi($keyword) {
+    $uri = "https://corrykalam.gq/simi.php?text=" . $keyword;
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $result = $json["answer"];
+    return $result;
+}
 function twitter($keyword) {
     $uri = "https://farzain.xyz/api/twitter.php?apikey=9YzAAXsDGYHWFRf6gWzdG5EQECW7oo&id=";
     $response = Unirest\Request::get("$uri");
@@ -38,7 +45,7 @@ function twitter($keyword) {
     return $result;
 }
 function instainfo($keyword) {
-    $uri = "https://farzain.com/api/ig_profile.php?id=" . $keyword . "&apikey=odu7493747dundjdjd";
+    $uri = "https://farzain.xyz/api/ig_profile.php?id=";
     $response = Unirest\Request::get("$uri");
     $json = json_decode($response->raw_body, true);
     $parsed['poto']      = $json['info']['profile_pict'];
@@ -49,6 +56,7 @@ function instainfo($keyword) {
     $parsed['totalpost'] = $json['count']['post'];
     $parsed['bio']       = $json['info']['bio'];
     $parsed['bawah']     = 'https://www.instagram.com/'. $keyword;
+    
     return $parsed;
 }
 function textspech($keyword) {
@@ -429,298 +437,15 @@ if ($type == 'join') {
         )
     );
 }
-//show menu, saat join dan command /menu
-//fitur googlemap
 if($message['type']=='text') {
-	    if ($command == '/location' || $command == '/Location') {
-        $result = lokasi($options);
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                    'type' => 'location',
-                    'title' => 'Lokasi',
-                    'address' => $result['address'],
-                    'latitude' => $result['latitude'],
-                    'longitude' => $result['longitude']
-                ),
-            )
-        );
-    }
-}
-//fitur sound cloud
-if($message['type']=='text') {
-	    if ($command == '/soundcloud' || $command == '/Soundcloud') {
-        $result = cloud($options);
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-		    array(
-                  'type' => 'image',
-                  'originalContentUrl' => $result['icon'],
-                  'previewImageUrl' => $result['icon']
-                ),
-                array(
-                    'type' => 'text',
-                    'text' => 'ID: '.$result['id'].'
-TITLE: '. $result['judul'].'
-URL: '. $result['link']
-                ),
-		    array(
-                  'type' => 'audio',
-                  'originalContentUrl' => $result['audio'],
-                  'duration' => 60000
-                )
-            )
-        );
-    }
-}
-// fitur instagram
-if($message['type']=='text') {
-	    if ($command == '/instagram' || $command == '/Instagram') {
-        $parsed = instainfo($options);
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array (
-  'type' => 'template',
-  'altText' => 'This is a buttons template',
-  'template' => 
-  array (
-    'type' => 'buttons',
-    'thumbnailImageUrl' => $parsed['poto'],
-    'imageAspectRatio' => 'rectangle',
-    'imageSize' => 'cover',
-    'imageBackgroundColor' => '#FFFFFF',
-    'title' => 'Result1',
-    'text' => 'wrw',
-    'defaultAction' => 
-    array (
-      'type' => 'uri',
-      'label' => 'Youtube',
-      'uri' => 'http://example.com/page/123',
-    ),
-    'actions' => 
-    array (
-      0 => 
-      array (
-        'type' => 'postback',
-        'label' => 'Lihat video',
-        'data' => 'action=buy&itemid=123',
-	'text' => 'Youtube-view'
-      )
-    )
-  )
-)
-            )
-        );
-    }
-}
-if($message['type']=='text') {
-	    if ($command == '/anime' || $command == '/Anime') {
-        $result = anime($options);
-        $altText = "Title : " . $result['title'];
-        $altText .= "\n\n" . $result['desc'];
-        $altText .= "\nMAL Page : https://myanimelist.net/anime/" . $result['id'];
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                    'type' => 'template',
-                    'altText' => $altText,
-                    'template' => array(
-                        'type' => 'buttons',
-                        'title' => $result['title'],
-                        'thumbnailImageUrl' => $result['image'],
-                        'text' => $result['desc'],
-                        'actions' => array(
-                            array(
-                                'type' => 'postback',
-                                'label' => 'Baca Sinopsis-nya',
-                                'data' => 'action=add&itemid=123',
-                                'text' => '/anime-syn ' . $options
-                            ),
-                            array(
-                                'type' => 'uri',
-                                'label' => 'Website MAL',
-                                'uri' => 'https://myanimelist.net/anime/' . $result['id']
-                            )
-                        )
-                    )
-                )
-            )
-        );
-    }
-}
-if($message['type']=='text') {
-    if ($command == '/manga') {
-        $altText = "Title : "
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                    'type' => 'template',
-                    'altText' => 'test',
-                    'template' => array(
-                        'type' => 'buttons',
-                        'title' => 'sks',
-                        'text' => 'sss',
-                        'actions' => array(
-                            array(
-                                'type' => 'message',
-                                'label' => 'Baca Sinopsis-nya',
-                                'text' => 'asssa'
-                            ),
-                            array(
-                                'type' => 'uri',
-                                'label' => 'Website MAL',
-                                'uri' => 'https://myanimelist.net'
-                            )
-                        )
-                    )
-                )
-            )
-        );
-    }
-}
-if($message['type']=='text') {
-	    if ($command == '/time') {
-        $result = waktu($options);
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                    'type' => 'text',
-                    'text' => $result
-                )
-            )
-        );
-    }
-}
-if($message['type']=='text') {
-	    if ($command == '/say') {
-        $result = say($options);
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                    'type' => 'text',
-                    'text' => $result
-                )
-            )
-        );
-    }
-}
-if($message['type']=='text') {
-	    if ($command == '/twitter') {
-        $result = twitter($options);
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                    'type' => 'text',
-                    'text' => $result
-                )
-            )
-        );
-    }
-}
-if($message['type']=='text') {
-	    if ($command == '/qiblat') {
-        $hasil = qibla($options);
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                    'type' => 'image',
-                    'originalContentUrl' => $hasil,
-                    'previewImageUrl' => $hasil
-                )
-            )
-        );
-    }
-}
-if($message['type']=='text') {
-	    if ($command == '/joox') {
-        $result = musiknya($options);
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                    'type' => 'text',
-                    'text' => $result
-                )
-            )
-        );
-    }
-}
-if($message['type']=='text') {
-	    if ($command == '/gambar') {
-        $result = gambarnya($options);
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                  'type' => 'image',
-                  'originalContentUrl' => $jawab,
-                  'previewImageUrl' => $jawab
-                )
-            )
-        );
-    }
-}
-if($message['type']=='text') {
-	    if ($command == '/fansign') {
-        $result = fansign($options);
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                    'type' => 'image',
-                    'originalContentUrl' => $result,
-                    'previewImageUrl' => $result
-                )
-            )
-        );
-    }
-}
-if($message['type']=='text') {
-	    if ($command == '/jadwaltv') {
-        $result = jadwaltv($options);
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                    'type' => 'text',
-                    'text' => $result
-                )
-            )
-        );
-    }
-}
-if($message['type']=='text') {
-	    if ($command == '/shalat') {
-        $result = shalat($options);
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                    'type' => 'text',
-                    'text' => $result
-                )
-            )
-        );
-    }
-}
-if($message['type']=='text') {
-	    if ($command == '/cuaca') {
+	if ($command == '/cuaca') {
         $result = cuaca($options);
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
                 array(
                     'type' => 'text',
-                    'text' => $result
+                    'text' => 'done'
                 )
             )
         );
@@ -741,20 +466,6 @@ if($message['type']=='sticker'){
 						);
 						
 }
-else
-if($message['type']=='text') {
-	$result = simi($command);
-        $balas = array(
-            'replyToken' => $replyToken,														
-	    'messages' => array(
-		   array(
-                    'type' => 'text',
-                    'text' => $profil->displayName.' '.$result
-                )
-	    )
-        );
-    }
-
 
 if (isset($balas)) {
     $result = json_encode($balas);
