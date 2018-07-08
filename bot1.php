@@ -45,7 +45,7 @@ function twitter($keyword) {
     return $result;
 }
 function instainfo($keyword) {
-    $uri = "https://farzain.xyz/api/ig_profile.php?id=";
+    $uri = "https://farzain.com/api/ig_profile.php?id=frmnsyh820&apikey=odu7493747dundjdjd";
     $response = Unirest\Request::get("$uri");
     $json = json_decode($response->raw_body, true);
     $parsed['poto']      = $json['info']['profile_pict'];
@@ -56,7 +56,6 @@ function instainfo($keyword) {
     $parsed['totalpost'] = $json['count']['post'];
     $parsed['bio']       = $json['info']['bio'];
     $parsed['bawah']     = 'https://www.instagram.com/'. $keyword;
-    
     return $parsed;
 }
 function textspech($keyword) {
@@ -479,6 +478,42 @@ if($message['type']=='text') {
                             ),
                         ),
                         'thumbnailImageUrl' => 'https://i.imgur.com/vNZlfOA.jpg',
+                        'title' => 'Title',
+                        'text' => 'Text',
+                    ),
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/ig') {
+        $parsed = instainfo($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array (
+                    'type' => 'template',
+                    'altText' => 'this is a buttons template',
+                    'template' => 
+                    array (
+                        'type' => 'buttons',
+                        'actions' => 
+                        array (
+                            0 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'Action 1',
+                                'text' => 'Action 1',
+                            ),
+                            1 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'Action 2',
+                                'text' => 'Action 2',
+                            ),
+                        ),
+                        'thumbnailImageUrl' => $parsed['poto'],
                         'title' => 'Title',
                         'text' => 'Text',
                     ),
