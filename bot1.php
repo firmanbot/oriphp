@@ -451,6 +451,42 @@ if($message['type']=='text') {
         );
     }
 }
+if($message['type']=='text') {
+    if ($command == '/help') {
+        $result = cuaca($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array (
+                    'type' => 'template',
+                    'altText' => 'this is a buttons template',
+                    'template' => 
+                    array (
+                        'type' => 'buttons',
+                        'actions' => 
+                        array (
+                            0 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'Action 1',
+                                'text' => 'Action 1',
+                            ),
+                            1 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'Action 2',
+                                'text' => 'Action 2',
+                            ),
+                        ),
+                        'thumbnailImageUrl' => 'https://i.imgur.com/vNZlfOA.jpg',
+                        'title' => 'Title',
+                        'text' => 'Text',
+                    ),
+                )
+            )
+        );
+    }
+}
 if($message['type']=='sticker'){	
 	$result = stickerlist($options);
 	$balas = array(
