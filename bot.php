@@ -453,16 +453,7 @@ if($message['type']=='text') {
 }
 if($message['type']=='text') {
     if ($command == '/apakah ') {
-        $list_jwb = array(
-            'Ya',
-            'Bisa jadi',
-            'Mungkin',
-            'Gak tau', 
-            'Woya donk',
-            'Tidak',    
-            );
-        $jaws = array_rand($list_jwb);
-        $jawab = $list_jwb[$jaws];
+	$hasil = jawabs();
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
