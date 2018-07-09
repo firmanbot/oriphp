@@ -522,21 +522,6 @@ if($message['type']=='text') {
         );
     }
 }
-if($message['type']=='sticker'){	
-	$result = stickerlist($options);
-	$balas = array(
-		'replyToken' => $replyToken,														
-		'messages' => array(
-			array(
-		            'type' => 'sticker', // sesuaikan
-                            'packageId' => 1, // sesuaikan
-                            'stickerId' => $result// sesuaikan										
-									
-									)
-							)
-						);
-						
-}
 
 if (isset($balas)) {
     $result = json_encode($balas);
