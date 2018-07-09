@@ -511,7 +511,7 @@ if($message['type']=='text') {
     }
 }
 if($message['type']=='text') {
-    if ($command == '/apakah') {
+    if ($command == '/apakah ') {
         $result = jawabs($options);
         $balas = array(
             'replyToken' => $replyToken,
