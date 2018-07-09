@@ -513,7 +513,6 @@ if($message['type']=='text') {
                                 'text' => 'Action 2',
                             ),
                         ),
-                        'thumbnailImageUrl' => $parsed['poto'],
                         'title' => 'Title',
                         'text' => 'Text',
                     ),
