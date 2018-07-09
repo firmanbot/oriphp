@@ -679,7 +679,7 @@ if($message['type']=='text') {
                             array (
                                 'type' => 'message',
                                 'label' => 'Followers: ' . $parsed['followers'],
-                                'text' => '',
+                                'text' => 'test',
                             ),
                             1 => 
                             array (
