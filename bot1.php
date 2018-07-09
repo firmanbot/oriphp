@@ -497,14 +497,13 @@ if($message['type']=='text') {
     }
 }
 if($message['type']=='text') {
-    if ($command == '/ig') {
-        $parsed = instainfo($options);
+    if ($command == '/hiburan') {
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
                 array (
                     'type' => 'template',
-                    'altText' => 'this is a buttons template',
+                    'altText' => '[FGM Bot] Hiburan',
                     'template' => 
                     array (
                         'type' => 'buttons',
@@ -513,24 +512,30 @@ if($message['type']=='text') {
                             0 => 
                             array (
                                 'type' => 'message',
-                                'label' => 'Action 1',
-                                'text' => 'Action 1',
+                                'label' => 'Kerang Ajaib',
+                                'text' => '/apakah<spasi><teks>',
                             ),
                             1 => 
                             array (
                                 'type' => 'message',
-                                'label' => 'Action 2',
-                                'text' => 'Action 2',
+                                'label' => 'Penjawab pertanyaan',
+                                'text' => '/penjwbpertanyaan',
+                            2 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'Presentase Mood',
+                                'text' => '/mood<spasi><nama>',
                             ),
                         ),
-                        'title' => 'Title',
-                        'text' => 'Text',
+                        'title' => 'Fitur Hiburan',
+                        'text' => 'Lets Fun dengan fitur ini. Jangan dianggap serius...',
                     ),
                 )
             )
         );
     }
 }
+
 
 if (isset($balas)) {
     $result = json_encode($balas);
