@@ -26,13 +26,6 @@ if (count($pesan_datang) > 2) {
     }
 }
 #-------------------------[Function]-------------------------#
-function simi($keyword) {
-    $uri = "https://corrykalam.gq/simi.php?text=" . $keyword;
-    $response = Unirest\Request::get("$uri");
-    $json = json_decode($response->raw_body, true);
-    $result = $json["answer"];
-    return $result;
-}
 function twitter($keyword) {
     $uri = "https://farzain.xyz/api/twitter.php?apikey=9YzAAXsDGYHWFRf6gWzdG5EQECW7oo&id=";
     $response = Unirest\Request::get("$uri");
@@ -464,7 +457,7 @@ if($message['type']=='text') {
                             3 => 
                             array (
                                 'type' => 'uri',
-                                'label' => 'Creator',
+                                'label' => 'OA FGM',
                                 'uri' => 'http://line.me/R/ti/p/~@wcf4912l',
                             ),
                         ),
@@ -476,7 +469,7 @@ if($message['type']=='text') {
         );
     }
 }
-//Fitur hiburan
+//======================Fitur hiburan================================
 if($message['type']=='text') {
     if ($command == '/hiburan') {
         $balas = array(
@@ -484,7 +477,7 @@ if($message['type']=='text') {
             'messages' => array(
                 array (
                     'type' => 'template',
-                    'altText' => 'this is a buttons template',
+                    'altText' => '[ FGM BOT ] Hiburan',
                     'template' => 
                     array (
                         'type' => 'buttons',
@@ -494,7 +487,7 @@ if($message['type']=='text') {
                             array (
                                 'type' => 'message',
                                 'label' => 'Kerang Ajaib',
-                                'text' => '/apakah<:><pesan>',
+                                'text' => '/apakah<spasi><pesan>',
                             ),
                             1 => 
                             array (
@@ -518,7 +511,7 @@ if($message['type']=='text') {
     }
 }
 if($message['type']=='text') {
-    if ($command == '/apakah:') {
+    if ($command == '/apakah') {
         $result = jawabs($options);
         $balas = array(
             'replyToken' => $replyToken,
@@ -596,6 +589,73 @@ if($message['type']=='text') {
                 array(
                     'type' => 'text',
                     'text' => $result
+                )
+            )
+        );
+    }
+}
+//=========ALAT===============
+if($message['type']=='text') {
+    if ($command == '/alat') {
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array (
+                    'type' => 'template',
+                    'altText' => '[ FGM BOT ] Alat',
+                    'template' => 
+                    array (
+                        'type' => 'buttons',
+                        'actions' => 
+                        array (
+                            0 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'Url ID Line',
+                                'text' => '/idl<spasi><Id line>',
+                            ),
+                            1 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'Url Chat WA',
+                                'text' => '/chatwa<s><no telp>\n\nNB: Angka 0 di digit awal diganti menjadi 62',
+                            ),
+                            2 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'Cek Profil IG',
+                                'text' => '/ig<spasi><username>',
+                            ),
+                        ),
+                        'title' => 'Fitur Alat',
+                        'text' => 'Utilitas yang dapat memudahkan pekerjaan Anda',
+                    ),
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/idl') {
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'http://line.me/R/ti/p/~' . $options
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/chatwa') {
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'https://api.whatsapp.com/send?phone=' . $options
                 )
             )
         );
