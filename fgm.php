@@ -700,7 +700,7 @@ if($message['type']=='text') {
                                 'uri' => $parsed['bawah'],
                             ),
                         ),
-			'thumbnailImageUrl' => $parsed['poto']
+			'thumbnailImageUrl' => $parsed['poto'],
                         'title' => 'Info Profil IG',
                         'text' => $parsed['nama'],
                     ),
