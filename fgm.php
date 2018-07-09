@@ -380,12 +380,19 @@ function dimana($keyword){
     $jawab = $listnya[$jaws];
     return($jawab);
 }
-function adaapa($keyword){
+function mood($keyword){
     $listnya = array(
-        'lagi badmood kali...',
-        'diputusin pacar kali...',
-        'gabut kali...',
-        'kesel kali',
+        'Presentase mood ' . $keyword . ' adalah 0%',
+        'Presentase mood ' . $keyword . ' adalah 10%',
+        'Presentase mood ' . $keyword . ' adalah 20%',
+        'Presentase mood ' . $keyword . ' adalah 30%',
+        'Presentase mood ' . $keyword . ' adalah 40%',
+        'Presentase mood ' . $keyword . ' adalah 50%',
+        'Presentase mood ' . $keyword . ' adalah 60%',
+        'Presentase mood ' . $keyword . ' adalah 70%',
+        'Presentase mood ' . $keyword . ' adalah 80%',
+        'Presentase mood ' . $keyword . ' adalah 90%',
+        'Presentase mood ' . $keyword . ' adalah 100%',
     );
     $jaws = array_rand($listnya);
     $jawab = $listnya[$jaws];
@@ -398,7 +405,7 @@ function adaapa($keyword){
 # require_once('./src/function/search-2.php');
 # require_once('./src/function/hard.php');
 if ($type == 'join') {
-    $text = "Thx telah di undang ke grup. silakan ketik /help";
+    $text = "Thx telah di undang ke grup. silakan ketik /key.\n\nJangan lupa add OA FGM\nhttp://line.me/R/ti/p/~@wcf4912l";
     $balas = array(
         'replyToken' => $replyToken,
         'messages' => array(
@@ -569,6 +576,20 @@ if($message['type']=='text') {
 if($message['type']=='text') {
     if ($command == '/dimana') {
         $result = dimana($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/mood') {
+        $result = mood($options);
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
