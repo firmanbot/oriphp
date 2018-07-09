@@ -510,7 +510,20 @@ if($message['type']=='text') {
         );
     }
 }
-
+if($message['type']=='text') {
+    if ($command == '/apakah') {
+        $result = jawabs($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
+    }
+}
 
 if (isset($balas)) {
     $result = json_encode($balas);
