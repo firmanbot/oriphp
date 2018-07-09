@@ -435,7 +435,7 @@ if ($type == 'join') {
 }
 if($message['type']=='text') {
     if ($command == '/apakah ') {
-        $result = jawabs($options);
+        $result = stickerlist($options);
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
