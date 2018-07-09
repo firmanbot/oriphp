@@ -402,6 +402,80 @@ function send($input, $rt){
     );
     return($send);
 }
+function jawabs($keyword){
+    $listnya = array(
+        'Ya',
+        'Bisa jadi',
+        'Mungkin',
+        'Gak tau',
+	'Tidak',   
+    );
+    $jaws = array_rand($listnya);
+    $jawab = $listnya[$jaws];
+    return($jawab);
+}
+function kenapa($keyword){
+    $listnya = array(
+        'dia sedang mempunyai masalah pribadi',
+        'dia lagi gabut','memang begitu dari sananya :v',
+        'sudah kebiasaan jadi susah ngilanginnya :v',
+        'dia sedang bahagia',
+    );
+    $jaws = array_rand($listnya);
+    $jawab = $listnya[$jaws];
+    return($jawab);
+}
+function mengapa($keyword){
+    $listnya = array(
+        'dia sedang mempunyai masalah pribadi',
+        'dia lagi gabut','memang begitu dari sananya :v',
+        'sudah kebiasaan jadi susah ngilanginnya :v',
+        'dia sedang bahagia', 
+    );
+    $jaws = array_rand($listnya);
+    $jawab = $listnya[$jaws];
+    return($jawab);
+}
+function kapan($keyword){
+    $listnya = array(
+        'Hari ini',
+        'Besok',
+        'lusa',
+        'Setelah laut mengering',
+        'Sebulan lagi',
+        'Setahun lagi',
+    );
+    $jaws = array_rand($listnya);
+    $jawab = $listnya[$jaws];
+    return($jawab);
+}
+function dimana($keyword){
+    $listnya = array(
+        'di comberan',
+        'di rumah',
+        'di luar angkasa',
+        'di tempat dugem',
+        'dirumah',
+        'di tempat nongkrong',
+        'di warnet',
+        'di arab',
+        'di jalan raya',
+    );
+    $jaws = array_rand($listnya);
+    $jawab = $listnya[$jaws];
+    return($jawab);
+}
+function adaapa($keyword){
+    $listnya = array(
+        'lagi badmood kali...',
+        'diputusin pacar kali...',
+        'gabut kali...',
+        'kesel kali',
+    );
+    $jaws = array_rand($listnya);
+    $jawab = $listnya[$jaws];
+    return($jawab);
+}
 #-------------------------[Function]-------------------------#
 # require_once('./src/function/search-1.php');
 # require_once('./src/function/download.php');
@@ -488,7 +562,7 @@ if($message['type']=='text') {
             'messages' => array(
                 array (
                     'type' => 'template',
-                    'altText' => '[FGM Bot] Hiburan',
+                    'altText' => 'this is a buttons template',
                     'template' => 
                     array (
                         'type' => 'buttons',
@@ -498,23 +572,94 @@ if($message['type']=='text') {
                             array (
                                 'type' => 'message',
                                 'label' => 'Kerang Ajaib',
-                                'text' => '/apakah<spasi><teks>',
+                                'text' => '/apakah',
                             ),
                             1 => 
                             array (
                                 'type' => 'message',
-                                'label' => 'Penjawab pertanyaan',
+                                'label' => 'Penjawab Pertanyaan',
                                 'text' => '/penjwbpertanyaan',
+                            ),
                             2 => 
                             array (
                                 'type' => 'message',
                                 'label' => 'Presentase Mood',
-                                'text' => '/mood<spasi><nama>',
+                                'text' => '/mood',
                             ),
                         ),
                         'title' => 'Fitur Hiburan',
-                        'text' => 'Lets Fun dengan fitur ini. Jangan dianggap serius...',
+                        'text' => 'Lets Fun dengan Fitur ini.',
                     ),
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/apakah') {
+        $result = jawabs($options)
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/kenapa') {
+        $result = kenapa($options)
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/mengapa') {
+        $result = mengapa($options)
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/kapan') {
+        $result = kapan($options)
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/dimana') {
+        $result = dimana($options)
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $result
                 )
             )
         );
