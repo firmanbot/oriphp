@@ -524,6 +524,62 @@ if($message['type']=='text') {
         );
     }
 }
+if($message['type']=='text') {
+    if ($command == '/mengapa') {
+        $result = mengapa($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/kenapa') {
+        $result = kenapa($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/kapan') {
+        $result = kapan($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/dimana') {
+        $result = dimana($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $result
+                )
+            )
+        );
+    }
+}
 
 if (isset($balas)) {
     $result = json_encode($balas);
