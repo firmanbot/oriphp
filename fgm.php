@@ -487,7 +487,7 @@ if($message['type']=='text') {
                             array (
                                 'type' => 'message',
                                 'label' => 'Kerang Ajaib',
-                                'text' => '/apakah<s><pesan>',
+                                'text' => '/apakah<:><pesan>',
                             ),
                             1 => 
                             array (
@@ -511,7 +511,7 @@ if($message['type']=='text') {
     }
 }
 if($message['type']=='text') {
-    if ($command == '/apakah ') {
+    if ($command == '/apakah:') {
         $result = jawabs($options);
         $balas = array(
             'replyToken' => $replyToken,
