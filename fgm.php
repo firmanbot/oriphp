@@ -597,6 +597,7 @@ if($message['type']=='text') {
 //=========ALAT===============
 if($message['type']=='text') {
     if ($command == '/alat') {
+	$whats = nl2br('/chatwa<s><no telp>\n\nNB: Angka 0 di digit awal diganti menjadi 62');
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
@@ -618,7 +619,7 @@ if($message['type']=='text') {
                             array (
                                 'type' => 'message',
                                 'label' => 'Url Chat WA',
-                                'text' => '/chatwa<s><no telp>\n\nNB: Angka 0 di digit awal diganti menjadi 62',
+                                'text' => $whats,
                             ),
                             2 => 
                             array (
