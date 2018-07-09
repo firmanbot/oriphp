@@ -446,7 +446,7 @@ if($message['type']=='text') {
                             array (
                                 'type' => 'message',
                                 'label' => 'Alat',
-                                'text' => 'Wait Next Update',
+                                'text' => '/alat',
                             ),
                             2 => 
                             array (
