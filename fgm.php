@@ -679,19 +679,19 @@ if($message['type']=='text') {
                             array (
                                 'type' => 'message',
                                 'label' => 'Followers: ' . $parsed['followers'],
-                                'text' => 'test',
+                                'text' => 'Itu Jumlah Pengikutnya',
                             ),
                             1 => 
                             array (
                                 'type' => 'message',
                                 'label' => 'Following: ' . $parsed['following'],
-                                'text' => '/chatwa',
+                                'text' => 'Itu Jumlah user yang dia ikuti',
                             ),
                             2 => 
                             array (
                                 'type' => 'message',
                                 'label' => 'Jumlah Post: ' . $parsed['totalpost'],
-                                'text' => '/ig<spasi><username>',
+                                'text' => 'Itu Jumlah Postingannya',
                             ),
 			    3 => 
                             array (
