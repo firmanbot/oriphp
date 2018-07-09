@@ -451,14 +451,13 @@ if($message['type']=='text') {
     }
 }
 if($message['type']=='text') {
-    if ($command == '/help') {
-        $result = cuaca($options);
+    if ($command == '/key') {
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
                 array (
                     'type' => 'template',
-                    'altText' => 'this is a buttons template',
+                    'altText' => 'Keyword FGM Bot',
                     'template' => 
                     array (
                         'type' => 'buttons',
@@ -467,19 +466,30 @@ if($message['type']=='text') {
                             0 => 
                             array (
                                 'type' => 'message',
-                                'label' => 'Action 1',
-                                'text' => 'Action 1',
+                                'label' => 'Hiburan',
+                                'text' => '/hiburan',
                             ),
                             1 => 
                             array (
                                 'type' => 'message',
-                                'label' => 'Action 2',
-                                'text' => 'Action 2',
+                                'label' => 'Alat',
+                                'text' => 'Wait Next Update',
+                            ),
+                            2 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'About',
+                                'text' => '/about',
+                            ),
+                            3 => 
+                            array (
+                                'type' => 'uri',
+                                'label' => 'Creator',
+                                'uri' => 'http://line.me/R/ti/p/~@wcf4912l',
                             ),
                         ),
-                        'thumbnailImageUrl' => 'https://i.imgur.com/vNZlfOA.jpg',
-                        'title' => 'Title',
-                        'text' => 'Text',
+                        'title' => 'FGM Bot Keywords',
+                        'text' => 'Klik Salah satu menu dibawah ini',
                     ),
                 )
             )
