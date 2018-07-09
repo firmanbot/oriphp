@@ -451,20 +451,6 @@ if($message['type']=='text') {
         );
     }
 }
-if($message['type']=='text') {
-    if ($command == '/apakah ') {
-	$result = jawabs($options);
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                    'type' => 'text',
-                    'text' => $result
-                )
-            )
-        ),
-    }
-}
 if($message['type']=='sticker'){	
 	$result = stickerlist($options);
 	$balas = array(
