@@ -584,7 +584,7 @@ if($message['type']=='text') {
                             array (
                                 'type' => 'message',
                                 'label' => 'Presentase Mood',
-                                'text' => '/mood',
+                                'text' => '/mood<spasi><nama>',
                             ),
                         ),
                         'title' => 'Fitur Hiburan',
