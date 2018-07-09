@@ -408,7 +408,7 @@ function jawabs($keyword){
         'Bisa jadi',
         'Mungkin',
         'Gak tau',
-		'Tidak',   
+	'Tidak',   
     );
     $jaws = array_rand($listnya);
     $jawab = $listnya[$jaws];
