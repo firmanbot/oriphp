@@ -403,7 +403,7 @@ function send($input, $rt){
     );
     return($send);
 }
-function jawabs(){
+function jawabs($keyword){
     $list_jwb = array(
 		'Ya',
 	        'Bisa jadi',
@@ -453,13 +453,13 @@ if($message['type']=='text') {
 }
 if($message['type']=='text') {
     if ($command == '/apakah ') {
-	$hasil = jawabs();
+	$result = jawabs($options);
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
                 array(
                     'type' => 'text',
-                    'text' => $hasil
+                    'text' => $result
                 )
             )
         ),
