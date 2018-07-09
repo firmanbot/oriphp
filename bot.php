@@ -404,16 +404,12 @@ function send($input, $rt){
     return($send);
 }
 function jawabs($keyword){
-    $list_jwb = array(
-		'Ya',
-	        'Bisa jadi',
-	        'Mungkin',
-	        'Gak tau',
-	        'Woya donk',
-	        'Jawab gk yah!',
-		'Tidak',
-		'Coba ajukan pertanyaan lain',	    
-		);
+    $listnya = array(
+	    'Ya',
+	    'Bisa jadi',
+	    'Mungkin',
+	    'Gak tau',    
+    );
     $jaws = array_rand($list_jwb);
     $jawab = $list_jwb[$jaws];
     return($jawab);
@@ -438,14 +434,14 @@ if ($type == 'join') {
     );
 }
 if($message['type']=='text') {
-    if ($command == '/cuaca') {
-        $result = cuaca($options);
+    if ($command == '/apakah ') {
+        $result = jawabs($options);
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
                 array(
                     'type' => 'text',
-                    'text' => 'done'
+                    'text' => $result
                 )
             )
         );
