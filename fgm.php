@@ -661,6 +661,54 @@ if($message['type']=='text') {
         );
     }
 }
+if($message['type']=='text') {
+    if ($command == '/ig') {
+	$parsed = instainfo($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array (
+                    'type' => 'template',
+                    'altText' => 'Instagram Profile',
+                    'template' => 
+                    array (
+                        'type' => 'buttons',
+                        'actions' => 
+                        array (
+                            0 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'Followers: ' . $parsed['followers'],
+                                'text' => '',
+                            ),
+                            1 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'Following: ' . $parsed['following'],
+                                'text' => '/chatwa',
+                            ),
+                            2 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'Jumlah Post: ' . $parsed['totalpost'],
+                                'text' => '/ig<spasi><username>',
+                            ),
+			    3 => 
+                            array (
+                                'type' => 'uri',
+                                'label' => 'Kunjungi IG nya',
+                                'uri' => $parsed['bawah'],
+                            ),
+                        ),
+			'thumbnailImageUrl' => $parsed['poto']
+                        'title' => 'Info Profil IG',
+                        'text' => $parsed['nama'],
+                    ),
+                )
+            )
+        );
+    }
+}
 
 if (isset($balas)) {
     $result = json_encode($balas);
