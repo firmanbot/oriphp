@@ -487,7 +487,7 @@ if($message['type']=='text') {
                             array (
                                 'type' => 'message',
                                 'label' => 'Kerang Ajaib',
-                                'text' => '/apakah',
+                                'text' => '/apakah<s><pesan>',
                             ),
                             1 => 
                             array (
