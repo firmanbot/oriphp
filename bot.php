@@ -459,7 +459,7 @@ if($message['type']=='text') {
             'messages' => array(
                 array(
                     'type' => 'text',
-                    'text' => $jawab
+                    'text' => $hasil
                 )
             )
         ),
