@@ -365,6 +365,7 @@ if($message['type']=='text') {
                             ),
                         ),
                         'thumbnailImageUrl' => 'http://mirip.men/anu/26.jpg',
+			'title' => 'test',
                         'text' => 'lel',
                     ),
                 )
