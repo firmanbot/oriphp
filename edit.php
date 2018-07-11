@@ -344,48 +344,6 @@ if($message['type']=='text') {
         );
     }
 }
-if($message['type']=='text') {
-    if ($command == '/mirip') {
-	$parsed = mirip($options)
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array (
-                    'type' => 'template',
-                    'altText' => 'Instagram Profile',
-                    'template' => 
-                    array (
-                        'type' => 'buttons',
-                        'actions' => 
-                        array (
-                            0 => 
-                            array (
-                                'type' => 'message',
-                                'label' => 'Followers: ',
-                                'text' => 'Itu Jumlah Pengikutnya',
-                            ),
-                            1 => 
-                            array (
-                                'type' => 'message',
-                                'label' => 'Following: ',
-                                'text' => 'Itu Jumlah user yang dia ikuti',
-                            ),
-                            2 => 
-                            array (
-                                'type' => 'message',
-                                'label' => 'Jumlah Post: ',
-                                'text' => 'Itu Jumlah Postingannya',
-                            ),
-                        ),
-                        'thumbnailImageUrl' => $parsed['pap'],
-                        'title' => 'Info Profil IG',
-                        'text' => $parsed['info'],
-                    ),
-                )
-            )
-        );
-    }
-}
 //=========ALAT===============
 if($message['type']=='text') {
     if ($command == '/alat') {
