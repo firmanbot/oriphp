@@ -345,7 +345,7 @@ if($message['type']=='text') {
     }
 }
 if($message['type']=='text') {
-    if ($command == '/miripsiapa') {
+    if ($command == '/mirip') {
 	$parsed = mirip($options)
         $balas = array(
             'replyToken' => $replyToken,
@@ -375,12 +375,6 @@ if($message['type']=='text') {
                                 'type' => 'message',
                                 'label' => 'Jumlah Post: ',
                                 'text' => 'Itu Jumlah Postingannya',
-                            ),
-			    3 => 
-                            array (
-                                'type' => 'uri',
-                                'label' => 'Kunjungi IG nya',
-                                'uri' => $parsed['bawah'],
                             ),
                         ),
                         'thumbnailImageUrl' => $parsed['pap'],
