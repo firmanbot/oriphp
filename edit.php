@@ -362,11 +362,10 @@ if($message['type']=='text') {
                             array (
                                 'type' => 'message',
                                 'label' => 'Ucapkan Selamat',
-                                'text' => 'Selamat ya. Muka mu emang pantes dengan dia...',
+                                'text' => 'Selamat ya.',
                             ),
                         ),
                         'thumbnailImageUrl' => $parsed['pap'],
-                        'title' => 'Fitur Alat',
                         'text' => $parsed['info'],
                     ),
                 )
