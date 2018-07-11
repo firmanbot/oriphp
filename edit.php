@@ -346,7 +346,6 @@ if($message['type']=='text') {
 }
 if($message['type']=='text') {
     if ($command == '/miripsiapa') {
-        $parsed = mirip($options);
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
