@@ -365,8 +365,8 @@ if($message['type']=='text') {
                                 'text' => 'Selamat ya.',
                             ),
                         ),
-                        'thumbnailImageUrl' => "http://mirip.men/anu/26.jpg",
-                        'text' => $parsed['info'],
+                        'thumbnailImageUrl' => 'http://mirip.men/anu/26.jpg',
+                        'text' => 'lel',
                     ),
                 )
             )
