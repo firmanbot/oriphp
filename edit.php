@@ -346,12 +346,13 @@ if($message['type']=='text') {
 }
 if($message['type']=='text') {
     if ($command == '/miripsiapa') {
+	$parsed = mirip($options)
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
                 array (
                     'type' => 'template',
-                    'altText' => 'Mirip Siapakah Dia?',
+                    'altText' => 'Instagram Profile',
                     'template' => 
                     array (
                         'type' => 'buttons',
@@ -360,13 +361,31 @@ if($message['type']=='text') {
                             0 => 
                             array (
                                 'type' => 'message',
-                                'label' => 'Ucapkan Selamat',
-                                'text' => 'Selamat ya.',
+                                'label' => 'Followers: ',
+                                'text' => 'Itu Jumlah Pengikutnya',
+                            ),
+                            1 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'Following: ',
+                                'text' => 'Itu Jumlah user yang dia ikuti',
+                            ),
+                            2 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'Jumlah Post: ',
+                                'text' => 'Itu Jumlah Postingannya',
+                            ),
+			    3 => 
+                            array (
+                                'type' => 'uri',
+                                'label' => 'Kunjungi IG nya',
+                                'uri' => $parsed['bawah'],
                             ),
                         ),
-                        'thumbnailImageUrl' => 'http://mirip.men/anu/26.jpg',
-			'title' => 'test',
-                        'text' => 'lel',
+                        'thumbnailImageUrl' => $parsed['pap'],
+                        'title' => 'Info Profil IG',
+                        'text' => $parsed['info'],
                     ),
                 )
             )
