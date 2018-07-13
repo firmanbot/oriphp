@@ -157,6 +157,133 @@ function mood($keyword){
     $jawab = $listnya[$jaws];
     return($jawab);
 }
+function status($keyword){
+    $listnya = array(
+        'Hidup',
+        'Nikah',
+        'Single',
+        'Jones',
+        'Hode',
+        'Nganggur',
+        'Stress',
+        'Sultan',
+        'Miskin',
+        'Badmood',
+    );
+    $jaws = array_rand($listnya);
+    $jawab = $listnya[$jaws];
+    return($jawab);
+}
+function lokasi($keyword){
+    $listnya = array(
+        'Di bumi',
+        'Di darat',
+        'Di pantai',
+        'Di Goa',
+        'Di Laut',
+        'Di pulau terpencil',
+        'Di warnet',
+        'Ditempat dugem',
+    );
+    $jaws = array_rand($listnya);
+    $jawab = $listnya[$jaws];
+    return($jawab);
+}
+function cita($keyword){
+    $listnya = array(
+        'Tukang kredit',
+        'Gamer noob',
+        'Nikah seumur hidup',
+        'Dokter cinta',
+        'Tukang gabut',
+        'Tukang Gosip',
+    );
+    $jaws = array_rand($listnya);
+    $jawab = $listnya[$jaws];
+    return($jawab);
+}
+function aktifitas($keyword){
+    $listnya = array(
+        'Liat postingan org',
+        'Gabut',
+        'Nyider',
+        'Like postingan org',
+        'Nongkrong',
+        'Ngegame',
+        'Dugem',
+        'Nge DJ',
+    );
+    $jaws = array_rand($listnya);
+    $jawab = $listnya[$jaws];
+    return($jawab);
+}
+function tinggi($keyword){
+    $listnya = array(
+        'lebih dari 1 mm',
+        '50 cm',
+        '2 m',
+        '1,5 m',
+        '4 m',
+        'Tak terhingga',
+    );
+    $jaws = array_rand($listnya);
+    $jawab = $listnya[$jaws];
+    return($jawab);
+}
+function berat($keyword){
+    $listnya = array(
+        'Sekilo',
+        'Seberat pensil',
+        'Se ton',
+        '50 kg',
+        'Seberat sumo',
+        'Tak terhingga',
+    );
+    $jaws = array_rand($listnya);
+    $jawab = $listnya[$jaws];
+    return($jawab);
+}
+function bentuktubuh($keyword){
+    $listnya = array(
+        'Sixpack',
+        'segitiga',
+        'seperti lidi',
+        'Gendut',
+        'Ramping',
+        'Kotak',
+    );
+    $jaws = array_rand($listnya);
+    $jawab = $listnya[$jaws];
+    return($jawab);
+}
+function hobi($keyword){
+    $listnya = array(
+        'Godain mantan',
+        'Ngesot dijalan raya',
+        'Godain mantan orang',
+        'Stalking',
+        'Ngelap batu akik',
+        'Makan kuaci',
+        'Ngitung butiran mecin',
+    );
+    $jaws = array_rand($listnya);
+    $jawab = $listnya[$jaws];
+    return($jawab);
+}
+function nasib($keyword){
+    $listnya = array(
+        'Suka di php',
+        'Baik baik saja',
+        'Selalu hoki',
+        'Selalu zonk',
+        'Terjebak masalah',
+        'Mendadak miskin',
+        'Mendadak kaya',
+    );
+    $jaws = array_rand($listnya);
+    $jawab = $listnya[$jaws];
+    return($jawab);
+}
 #-------------------------[Function]-------------------------#
 # require_once('./src/function/search-1.php');
 # require_once('./src/function/download.php');
@@ -301,6 +428,84 @@ if($message['type']=='text') {
                                         'type' => 'message',
                                         'label' => 'Liburan',
                                         'text' => '/liburan<spasi><nama>',
+                                    ),
+                                ),
+                            ),
+                            2 => 
+                            array (
+                                'title' => 'Fitur Hiburan',
+                                'text' => 'Halaman 3',
+                                'actions' => 
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Cek Status',
+                                        'text' => '/status<spasi><nama>',
+                                    ),
+                                    1 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Lacak Seseorang',
+                                        'text' => '/keahlian<spasi><nama>',
+                                    ),
+                                    2 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Cek Cita-cita',
+                                        'text' => '/citacita<spasi><nama>',
+                                    ),
+                                ),
+                            ),
+                            3 => 
+                            array (
+                                'title' => 'Fitur Hiburan',
+                                'text' => 'Halaman 4',
+                                'actions' => 
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Cek Aktifitas',
+                                        'text' => '/aktifitas<spasi><nama>',
+                                    ),
+                                    1 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Cek Tinggi Badan',
+                                        'text' => '/tinggi<spasi><nama>',
+                                    ),
+                                    2 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Cek Berat Badan',
+                                        'text' => '/berat<spasi><nama>',
+                                    ),
+                                ),
+                            ),
+                            4 => 
+                            array (
+                                'title' => 'Fitur Hiburan',
+                                'text' => 'Halaman 5',
+                                'actions' => 
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Cek Bentuk Tubuh',
+                                        'text' => '/miripsiapa<spasi><nama>',
+                                    ),
+                                    1 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Cek Nasib',
+                                        'text' => '/nasib<spasi><nama>',
+                                    ),
+                                    2 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Cek Hobi',
+                                        'text' => '/hobi<spasi><nama>',
                                     ),
                                 ),
                             ),
@@ -492,6 +697,132 @@ if($message['type']=='text') {
                         ),
                         'text' => $parsed['info'],
                     ),
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/status') {
+        $result = status($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'Status '. $options . ' Sekarang adalah ' . $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/lacak') {
+        $result = lokasi($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $options . ' Sekarang lagi di ' . $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/citacita') {
+        $result = cita($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'Cita-cita '. $options . ' jadi ' . $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/aktifitas') {
+        $result = aktifitas($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'aktifitas '. $options . ' Sekarang adalah ' . $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/tinggi') {
+        $result = tinggi($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'Tinggi '. $options . ' Sekarang adalah ' . $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/berat') {
+        $result = berat($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'Berat '. $options . ' Sekarang adalah ' . $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/bntktubuh') {
+        $result = bentuktubuh($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'Bentuk Tubuh '. $options . ' adalah ' . $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/nasib') {
+        $result = nasib($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'Nasib '. $options . ' Sekarang adalah ' . $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/hobi') {
+        $result = hobi($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'Hobi '. $options . ' adalah ' . $result
                 )
             )
         );
