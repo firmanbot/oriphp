@@ -26,17 +26,6 @@ if (count($pesan_datang) > 2) {
     }
 }
 #-------------------------[Function]-------------------------#
-function twitter($keyword) {
-    $uri = "https://farzain.xyz/api/twitter.php?apikey=9YzAAXsDGYHWFRf6gWzdG5EQECW7oo&id=";
-    $response = Unirest\Request::get("$uri");
-    $json = json_decode($response->raw_body, true);
-    $result = "「Twitter Result」\n\n";
-    $result .= "DisplayName: ";
-    $result .= $json[0]['user']['name'];
-    $result .= "UserName: ";
-    $result .= $json[0]['user']['screen_name'];
-    return $result;
-}
 function instainfo($keyword) {
     $uri = "https://farzain.com/api/ig_profile.php?id=" . $keyword . "&apikey=odu7493747dundjdjd";
     $response = Unirest\Request::get("$uri");
@@ -51,252 +40,29 @@ function instainfo($keyword) {
     $parsed['bawah']     = 'https://www.instagram.com/'. $keyword;
     return $parsed;
 }
-function textspech($keyword) {
-    $uri = "https://farzain.xyz/api/tts.php?apikey=9YzAAXsDGYHWFRf6gWzdG5EQECW7oo&id=" . $keyword;
+function mirip($keyword) {
+    $uri = "https://farzain.com/api/mirip.php?name=" . $keyword . "&apikey=odu7493747dundjdjd";
     $response = Unirest\Request::get("$uri");
     $json = json_decode($response->raw_body, true);
-    $result .= $json['result'];
-    return $result;
-}
-function ytlist($keyword) {
-    $uri = "https://farzain.xyz/api/premium/yt_search.php?apikey=ag73837ung43838383jdhdhd&id=" . $keyword;
-    $response = Unirest\Request::get("$uri");
-    $json = json_decode($response->raw_body, true);
-    $result['id0'] .= $json['respons'][0]['video_id'];
-    $result['title0'] .= $json['respons'][0]['title'];
-    $result['icon0'] .= $json['respons'][0]['thumbnail'];
-	
-    $result['id1'] .= $json['respons'][1]['video_id'];
-    $result['title1'] .= $json['respons'][1]['title'];
-    $result['icon1'] .= $json['respons'][1]['thumbnail'];
-	
-    $result['id2'] .= $json['respons'][2]['video_id'];
-    $result['title2'] .= $json['respons'][2]['title'];
-    $result['icon2'] .= $json['respons'][2]['thumbnail'];
-    return $result;
-}
-function cloud($keyword) {
-    $uri = "https://farzain.xyz/api/premium/soundcloud.php?apikey=ag73837ung43838383jdhdhd&id=" . $keyword;
-    $response = Unirest\Request::get("$uri");
-    $json = json_decode($response->raw_body, true);
-    
-    $result['id']    .= $json['result'][0]['id'];
-    $result['judul'] .= $json['result'][0]['title'];
-    $result['link']  .= $json['result'][0]['url'];
-    $result['audio'] .= $json['result'][0]['url_download'];
-    $result['icon']  .= $json['result'][0]['img'];
-	
-    return $result;
-}
-function musiknya($keyword) {
-    $uri = "https://farzain.xyz/api/premium/joox.php?apikey=ag73837ung43838383jdhdhd&id=" . $keyword;
-    $response = Unirest\Request::get("$uri");
-    $json = json_decode($response->raw_body, true);
-    $result = "「Music Result」\n";
-    $result .= "\n\nPenyanyinya: ";
-	  $result .= $json['info']['penyanyi'];
-    $result .= "\n\nJudulnya: ";
-    $result .= $json['info']['judul'];
-    $result .= "\n\nAlbum: ";
-    $result .= $json['info']['album'];
-    $result .= "\nMp3: \n";
-    $result .= $json['audio']['mp3'];
-    $result .= "\n\nM4a: \n";
-    $result .= $json['audio']['m4a'];
-    $result .= "\n\nIcon: \n";
-    $result .= $json['gambar'];
-    $result .= "\n\nLirik: \n";
-    $result .= $json['lirik'];
-    return $result;
-}
-function fansign($keyword) {
-    $listnya = array(
-	    "https://farzain.xyz//api//premium//fansign//cos/cos%20(1).php?text=" . $keyword . "&apikey=ag73837ung43838383jdhdhd",
-            "https://farzain.xyz//api//premium//fansign//cos/cos%20(2).php?text=" . $keyword . "&apikey=ag73837ung43838383jdhdhd",
-	    "https://farzain.xyz//api//premium//fansign//cos/cos%20(3).php?text=" . $keyword . "&apikey=ag73837ung43838383jdhdhd",
-	    "https://farzain.xyz//api//premium//fansign//cos/cos%20(4).php?text=" . $keyword . "&apikey=ag73837ung43838383jdhdhd",
-	    "https://farzain.xyz//api//premium//fansign//cos/cos%20(5).php?text=" . $keyword . "&apikey=ag73837ung43838383jdhdhd",
-	    "https://farzain.xyz//api//premium//fansign//cos/cos%20(6).php?text=" . $keyword . "&apikey=ag73837ung43838383jdhdhd",
-	    "https://farzain.xyz//api//premium//fansign//cos/cos%20(7).php?text=" . $keyword . "&apikey=ag73837ung43838383jdhdhd",
-	    );
-            $jaws = array_rand($listnya);
-            $result = $listnya[$jaws];
-    return $result;
-}
-function saveitoffline($keyword) {
-    $uri = "https://www.saveitoffline.com/process/?url=" . $keyword . '&type=json';
-    $response = Unirest\Request::get("$uri");
-    $json = json_decode($response->raw_body, true);
-	$result = "====[SaveOffline]====\n";
-	$result .= "Judul : \n";
-	$result .= $json['title'];
-	$result .= "\n\nUkuran : \n";
-	$result .= $json['urls'][0]['label'];
-	$result .= "\n\nURL Download : \n";
-	$result .= $json['urls'][0]['id'];
-	$result .= "\n\nUkuran : \n";
-	$result .= $json['urls'][1]['label'];
-	$result .= "\n\nURL Download : \n";
-	$result .= $json['urls'][1]['id'];
-	$result .= "\n\nUkuran : \n";
-	$result .= $json['urls'][2]['label'];	
-	$result .= "\n\nURL Download : \n";
-	$result .= $json['urls'][2]['id'];
-	$result .= "\n\nUkuran : \n";
-	$result .= $json['urls'][3]['label'];	
-	$result .= "\n\nURL Download : \n";
-	$result .= $json['urls'][3]['id'];	
-	$result .= "\n\nPencarian : Google\n";
-    return $result;
-}
-function jadwaltv($keyword) {
-    $uri = "https://farzain.xyz/api/premium/acaratv.php?apikey=ag73837ung43838383jdhdhd&id=" . $keyword;
-    $response = Unirest\Request::get("$uri");
-    $json = json_decode($response->raw_body, true);
-    $result = "「TV Schedule」";
-	  $result .= $json['url'];
-    return $result;
-}
-function shalat($keyword) {
-    $uri = "https://time.siswadi.com/pray/" . $keyword;
-    $response = Unirest\Request::get("$uri");
-    $json = json_decode($response->raw_body, true);
-    $result = "「Praytime Schedule」\n\n";
-	  $result .= $json['location']['address'];
-	  $result .= "\nTanggal : ";
-	  $result .= $json['time']['date'];
-	  $result .= "\n\nShubuh : ";
-	  $result .= $json['data']['Fajr'];
-	  $result .= "\nDzuhur : ";
-	  $result .= $json['data']['Dhuhr'];
-	  $result .= "\nAshar : ";
-	  $result .= $json['data']['Asr'];
-	  $result .= "\nMaghrib : ";
-	  $result .= $json['data']['Maghrib'];
-	  $result .= "\nIsya : ";
-	  $result .= $json['data']['Isha'];
-    return $result;
-}
-function cuaca($keyword) {
-    $uri = "http://api.openweathermap.org/data/2.5/weather?q=" . $keyword . ",ID&units=metric&appid=e172c2f3a3c620591582ab5242e0e6c4";
-    $response = Unirest\Request::get("$uri");
-    $json = json_decode($response->raw_body, true);
-    $result = "「Weather Result」";
-    $result .= "\n\nNama kota:";
-	  $result .= $json['name'];
-	  $result .= "\n\nCuaca : ";
-	  $result .= $json['weather']['0']['main'];
-	  $result .= "\nDeskripsi : ";
-	  $result .= $json['weather']['0']['description'];
-    return $result;
-}
-function say($keyword) { 
-    $uri = "https://script.google.com/macros/exec?service=AKfycbw7gKzP-WYV2F5mc9RaR7yE3Ve1yN91Tjs91hp_jHSE02dSv9w&nama=" . $keyword . "&tanggal=10-05-2003"; 
- 
-    $response = Unirest\Request::get("$uri"); 
- 
-    $json = json_decode($response->raw_body, true); 
- $result .= $json['data']['nama']; 
-    return $result; 
-}
-function waktu($keyword) {
-    $uri = "https://time.siswadi.com/pray/" . $keyword;
-    $response = Unirest\Request::get("$uri");
-    $json = json_decode($response->raw_body, true);
-    $result = "====[Time]====";
-    $result .= "\nLokasi : ";
-	$result .= $json['location']['address'];
-	$result .= "\nJam : ";
-	$result .= $json['time']['time'];
-	$result .= "\nSunrise : ";
-	$result .= $json['debug']['sunrise'];
-	$result .= "\nSunset : ";
-	$result .= $json['debug']['sunset'];
-	$result .= "\n\nPencarian : Google";
-	$result .= "\n====[Time]====";
-    return $result;
-}
-function manga($keyword) {
-    $fullurl = 'https://myanimelist.net/api/manga/search.xml?q=' . $keyword;
-    $username = 'jamal3213';
-    $password = 'FZQYeZ6CE9is';
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_VERBOSE, 1);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
-    curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-    curl_setopt($ch, CURLOPT_URL, $fullurl);
-    $returned = curl_exec($ch);
-    $xml = new SimpleXMLElement($returned);
-    $parsed = array();
-    $parsed['id'] = (string) $xml->entry[0]->id;
-    $parsed['image'] = (string) $xml->entry[0]->image;
-    $parsed['title'] = (string) $xml->entry[0]->title;
-    $parsed['desc'] = "Episode : ";
-    $parsed['desc'] .= $xml->entry[0]->episodes;
-    $parsed['desc'] .= "\nNilai : ";
-    $parsed['desc'] .= $xml->entry[0]->score;
-    $parsed['desc'] .= "\nTipe : ";
-    $parsed['desc'] .= $xml->entry[0]->type;
-    $parsed['synopsis'] = str_replace("<br />", "\n", html_entity_decode((string) $xml->entry[0]->synopsis, ENT_QUOTES | ENT_XHTML, 'UTF-8'));
+    $parsed['pap']  = $json['result']['image'];
+    $parsed['info'] = $json['result']['result'];
     return $parsed;
 }
-function manga_syn($keyword) {
-    $parsed = manga($keyword);
-    $result = "Judul : " . $parsed['title'];
-    $result .= "\n\nSynopsis :\n" . $parsed['synopsis'];
-    return $result;
-}
-function anime($keyword) {
-    $fullurl = 'https://myanimelist.net/api/anime/search.xml?q=' . $keyword;
-    $username = 'jamal3213';
-    $password = 'FZQYeZ6CE9is';
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_VERBOSE, 1);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
-    curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-    curl_setopt($ch, CURLOPT_URL, $fullurl);
-    $returned = curl_exec($ch);
-    $xml = new SimpleXMLElement($returned);
-    $parsed = array();
-    $parsed['id'] = (string) $xml->entry[0]->id;
-    $parsed['image'] = (string) $xml->entry[0]->image;
-    $parsed['title'] = (string) $xml->entry[0]->title;
-    $parsed['desc'] = "Episode : ";
-    $parsed['desc'] .= $xml->entry[0]->episodes;
-    $parsed['desc'] .= "\nNilai : ";
-    $parsed['desc'] .= $xml->entry[0]->score;
-    $parsed['desc'] .= "\nTipe : ";
-    $parsed['desc'] .= $xml->entry[0]->type;
-    $parsed['synopsis'] = str_replace("<br />", "\n", html_entity_decode((string) $xml->entry[0]->synopsis, ENT_QUOTES | ENT_XHTML, 'UTF-8'));
+function ahli($keyword) {
+    $uri = "https://farzain.com/api/ahli.php?name=" . $keyword . "&apikey=odu7493747dundjdjd";
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $parsed['pap']  = $json['result']['image'];
+    $parsed['info'] = $json['result']['result'];
     return $parsed;
 }
-function anime_syn($keyword) {
-    $parsed = anime($keyword);
-    $result = "Judul : " . $parsed['title'];
-    $result .= "\n\nSynopsis :\n" . $parsed['synopsis'];
-    return $result;
-}
-function qibla($keyword) { 
-    $uri = "https://time.siswadi.com/qibla/" . $keyword; 
- 
-    $response = Unirest\Request::get("$uri"); 
- 
-    $json = json_decode($response->raw_body, true); 
- $result .= $json['data']['image'];
-    return $result; 
-}
-function lokasi($keyword) { 
-    $uri = "https://time.siswadi.com/pray/" . $keyword; 
- 
-    $response = Unirest\Request::get("$uri"); 
- 
-    $json = json_decode($response->raw_body, true); 
- $result['address'] .= $json['location']['address'];
- $result['latitude'] .= $json['location']['latitude'];
- $result['longitude'] .= $json['location']['longitude'];
-    return $result; 
+function liburan($keyword) {
+    $uri = "https://farzain.com/api/libur.php?name=" . $keyword . "&apikey=odu7493747dundjdjd";
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $parsed['pap']  = $json['result']['image'];
+    $parsed['info'] = $json['result']['result'];
+    return $parsed;
 }
 function send($input, $rt){
     $send = array(
@@ -391,6 +157,133 @@ function mood($keyword){
     $jawab = $listnya[$jaws];
     return($jawab);
 }
+function status($keyword){
+    $listnya = array(
+        'Hidup',
+        'Nikah',
+        'Single',
+        'Jones',
+        'Hode',
+        'Nganggur',
+        'Stress',
+        'Sultan',
+        'Miskin',
+        'Badmood',
+    );
+    $jaws = array_rand($listnya);
+    $jawab = $listnya[$jaws];
+    return($jawab);
+}
+function lokasi($keyword){
+    $listnya = array(
+        'Di bumi',
+        'Di darat',
+        'Di pantai',
+        'Di Goa',
+        'Di Laut',
+        'Di pulau terpencil',
+        'Di warnet',
+        'Ditempat dugem',
+    );
+    $jaws = array_rand($listnya);
+    $jawab = $listnya[$jaws];
+    return($jawab);
+}
+function cita($keyword){
+    $listnya = array(
+        'Tukang kredit',
+        'Gamer noob',
+        'Nikah seumur hidup',
+        'Dokter cinta',
+        'Tukang gabut',
+        'Tukang Gosip',
+    );
+    $jaws = array_rand($listnya);
+    $jawab = $listnya[$jaws];
+    return($jawab);
+}
+function aktifitas($keyword){
+    $listnya = array(
+        'Liat postingan org',
+        'Gabut',
+        'Nyider',
+        'Like postingan org',
+        'Nongkrong',
+        'Ngegame',
+        'Dugem',
+        'Nge DJ',
+    );
+    $jaws = array_rand($listnya);
+    $jawab = $listnya[$jaws];
+    return($jawab);
+}
+function tinggi($keyword){
+    $listnya = array(
+        'lebih dari 1 mm',
+        '50 cm',
+        '2 m',
+        '1,5 m',
+        '4 m',
+        'Tak terhingga',
+    );
+    $jaws = array_rand($listnya);
+    $jawab = $listnya[$jaws];
+    return($jawab);
+}
+function berat($keyword){
+    $listnya = array(
+        'Sekilo',
+        'Seberat pensil',
+        'Se ton',
+        '50 kg',
+        'Seberat sumo',
+        'Tak terhingga',
+    );
+    $jaws = array_rand($listnya);
+    $jawab = $listnya[$jaws];
+    return($jawab);
+}
+function bentuktubuh($keyword){
+    $listnya = array(
+        'Sixpack',
+        'segitiga',
+        'seperti lidi',
+        'Gendut',
+        'Ramping',
+        'Kotak',
+    );
+    $jaws = array_rand($listnya);
+    $jawab = $listnya[$jaws];
+    return($jawab);
+}
+function hobi($keyword){
+    $listnya = array(
+        'Godain mantan',
+        'Ngesot dijalan raya',
+        'Godain mantan orang',
+        'Stalking',
+        'Ngelap batu akik',
+        'Makan kuaci',
+        'Ngitung butiran mecin',
+    );
+    $jaws = array_rand($listnya);
+    $jawab = $listnya[$jaws];
+    return($jawab);
+}
+function nasib($keyword){
+    $listnya = array(
+        'Suka di php',
+        'Baik baik saja',
+        'Selalu hoki',
+        'Selalu zonk',
+        'Terjebak masalah',
+        'Mendadak miskin',
+        'Mendadak kaya',
+    );
+    $jaws = array_rand($listnya);
+    $jawab = $listnya[$jaws];
+    return($jawab);
+}
 #-------------------------[Function]-------------------------#
 # require_once('./src/function/search-1.php');
 # require_once('./src/function/download.php');
@@ -477,33 +370,146 @@ if($message['type']=='text') {
             'messages' => array(
                 array (
                     'type' => 'template',
-                    'altText' => '[ FGM BOT ] Hiburan',
+                    'altText' => 'this is a carousel template',
                     'template' => 
                     array (
-                        'type' => 'buttons',
+                        'type' => 'carousel',
                         'actions' => 
+                        array (
+                        ),
+                        'columns' => 
                         array (
                             0 => 
                             array (
-                                'type' => 'message',
-                                'label' => 'Kerang Ajaib',
-                                'text' => '/apakah<spasi><pesan>',
+                                'title' => 'Fitur Hiburan',
+                                'text' => 'Halaman 1',
+                                'actions' =>
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Kerang Ajaib',
+                                        'text' => '/apakah<spasi><teks>',
+                                    ),
+                                    1 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Penjawab Pertanyaan',
+                                        'text' => '/penjwbpertanyaan',
+                                    ),
+                                    2 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Persentase Mood',
+                                        'text' => '/mood<spasi><nama>',
+                                    ),
+                                ),
                             ),
                             1 => 
                             array (
-                                'type' => 'message',
-                                'label' => 'Penjawab Pertanyaan',
-                                'text' => '/penjwbpertanyaan',
+                                'title' => 'Fitur Hiburan',
+                                'text' => 'Halaman 2',
+                                'actions' => 
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Mirip Siapa Dia?',
+                                        'text' => '/miripsiapa<spasi><nama>',
+                                    ),
+                                    1 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Keahlian',
+                                        'text' => '/keahlian<spasi><nama>',
+                                    ),
+                                    2 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Liburan',
+                                        'text' => '/liburan<spasi><nama>',
+                                    ),
+                                ),
                             ),
                             2 => 
                             array (
-                                'type' => 'message',
-                                'label' => 'Presentase Mood',
-                                'text' => '/mood<spasi><nama>',
+                                'title' => 'Fitur Hiburan',
+                                'text' => 'Halaman 3',
+                                'actions' => 
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Cek Status',
+                                        'text' => '/status<spasi><nama>',
+                                    ),
+                                    1 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Lacak Seseorang',
+                                        'text' => '/keahlian<spasi><nama>',
+                                    ),
+                                    2 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Cek Cita-cita',
+                                        'text' => '/citacita<spasi><nama>',
+                                    ),
+                                ),
+                            ),
+                            3 => 
+                            array (
+                                'title' => 'Fitur Hiburan',
+                                'text' => 'Halaman 4',
+                                'actions' => 
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Cek Aktifitas',
+                                        'text' => '/aktifitas<spasi><nama>',
+                                    ),
+                                    1 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Cek Tinggi Badan',
+                                        'text' => '/tinggi<spasi><nama>',
+                                    ),
+                                    2 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Cek Berat Badan',
+                                        'text' => '/berat<spasi><nama>',
+                                    ),
+                                ),
+                            ),
+                            4 => 
+                            array (
+                                'title' => 'Fitur Hiburan',
+                                'text' => 'Halaman 5',
+                                'actions' => 
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Cek Bentuk Tubuh',
+                                        'text' => '/bntktubuh<spasi><nama>',
+                                    ),
+                                    1 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Cek Nasib',
+                                        'text' => '/nasib<spasi><nama>',
+                                    ),
+                                    2 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Cek Hobi',
+                                        'text' => '/hobi<spasi><nama>',
+                                    ),
+                                ),
                             ),
                         ),
-                        'title' => 'Fitur Hiburan',
-                        'text' => 'Lets Fun dengan Fitur ini.',
                     ),
                 )
             )
@@ -589,6 +595,234 @@ if($message['type']=='text') {
                 array(
                     'type' => 'text',
                     'text' => $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/miripsiapa') {
+        $parsed = mirip($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array (
+                    'type' => 'template',
+                    'altText' => 'Mirip Siapakah Dia?',
+                    'template' => 
+                    array (
+                        'type' => 'buttons',
+                        'actions' => 
+                        array (
+                            0 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'Ucapkan Selamat',
+                                'text' => $options . ', Selamat ya. Muka mu emang pantes dengan dia...',
+                            ),
+                            1 => 
+                            array (
+                                'type' => 'uri',
+                                'label' => 'Lihat Gambar',
+                                'uri' => $parsed['pap'],
+                            ),
+                        ),
+                        'text' => $parsed['info'],
+                    ),
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/keahlian') {
+        $parsed = ahli($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array (
+                    'type' => 'template',
+                    'altText' => 'Keahlian seseorang',
+                    'template' => 
+                    array (
+                        'type' => 'buttons',
+                        'actions' => 
+                        array (
+                            0 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'Ucapkan Selamat',
+                                'text' => $options . ', Selamat ya. Luar biasa keahlianmu...',
+                            ),
+                            1 => 
+                            array (
+                                'type' => 'uri',
+                                'label' => 'Lihat Gambar',
+                                'uri' => $parsed['pap'],
+                            ),
+                        ),
+                        'text' => $parsed['info'],
+                    ),
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/liburan') {
+        $parsed = liburan($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array (
+                    'type' => 'template',
+                    'altText' => 'Liburan seseorang',
+                    'template' => 
+                    array (
+                        'type' => 'buttons',
+                        'actions' => 
+                        array (
+                            0 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'Ucapkan Selamat',
+                                'text' => 'Cie.. ' . $options . ' seneng pergi liburan',
+                            ),
+                            1 => 
+                            array (
+                                'type' => 'uri',
+                                'label' => 'Lihat Gambar',
+                                'uri' => $parsed['pap'],
+                            ),
+                        ),
+                        'text' => $parsed['info'],
+                    ),
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/status') {
+        $result = status($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'Status '. $options . ' Sekarang adalah ' . $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/lacak') {
+        $result = lokasi($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $options . ' Sekarang lagi di ' . $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/citacita') {
+        $result = cita($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'Cita-cita '. $options . ' jadi ' . $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/aktifitas') {
+        $result = aktifitas($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'aktifitas '. $options . ' Sekarang adalah ' . $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/tinggi') {
+        $result = tinggi($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'Tinggi '. $options . ' Sekarang adalah ' . $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/berat') {
+        $result = berat($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'Berat '. $options . ' Sekarang adalah ' . $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/bntktubuh') {
+        $result = bentuktubuh($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'Bentuk Tubuh '. $options . ' adalah ' . $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/nasib') {
+        $result = nasib($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'Nasib '. $options . ' Sekarang adalah ' . $result
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/hobi') {
+        $result = hobi($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'Hobi '. $options . ' adalah ' . $result
                 )
             )
         );
@@ -700,7 +934,7 @@ if($message['type']=='text') {
                                 'uri' => $parsed['bawah'],
                             ),
                         ),
-			'thumbnailImageUrl' => $parsed['poto'],
+                        'thumbnailImageUrl' => $parsed['poto'],
                         'title' => 'Info Profil IG',
                         'text' => $parsed['nama'],
                     ),
