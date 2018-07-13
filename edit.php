@@ -493,7 +493,7 @@ if($message['type']=='text') {
                                     array (
                                         'type' => 'message',
                                         'label' => 'Cek Bentuk Tubuh',
-                                        'text' => '/miripsiapa<spasi><nama>',
+                                        'text' => '/bntktubuh<spasi><nama>',
                                     ),
                                     1 => 
                                     array (
@@ -927,7 +927,7 @@ if($message['type']=='text') {
                                 'label' => 'Jumlah Post: ' . $parsed['totalpost'],
                                 'text' => 'Itu Jumlah Postingannya',
                             ),
-			                 3 => 
+			    3 => 
                             array (
                                 'type' => 'uri',
                                 'label' => 'Kunjungi IG nya',
