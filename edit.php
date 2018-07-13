@@ -57,7 +57,7 @@ function ahli($keyword) {
     return $parsed;
 }
 function liburan($keyword) {
-    $uri = "https://farzain.com/api/liburan.php?name=" . $keyword . "&apikey=odu7493747dundjdjd";
+    $uri = "https://farzain.com/api/libur.php?name=" . $keyword . "&apikey=odu7493747dundjdjd";
     $response = Unirest\Request::get("$uri");
     $json = json_decode($response->raw_body, true);
     $parsed['pap']  = $json['result']['image'];
