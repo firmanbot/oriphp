@@ -359,7 +359,7 @@ if($message['type']=='text') {
     }
 }
 if($message['type']=='text') {
-    if ($command == '/mirip') {
+    if ($command == '/miripsiapa') {
         $parsed = mirip($options);
         $balas = array(
             'replyToken' => $replyToken,
@@ -376,11 +376,16 @@ if($message['type']=='text') {
                             array (
                                 'type' => 'message',
                                 'label' => 'Ucapkan Selamat',
-                                'text' => 'Selamat ya. Muka mu emang pantes dengan dia...',
+                                'text' => $options . ', Selamat ya. Muka mu emang pantes dengan dia...',
+                            ),
+                            1 => 
+                            array (
+                                'type' => 'uri',
+                                'label' => 'Lihat Gambar',
+                                'uri' => $parsed['pap'],
                             ),
                         ),
-                        'title' => 'Fitur Alat',
-                        'text' => 'data',
+                        'text' => $parsed['info'],
                     ),
                 )
             )
