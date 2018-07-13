@@ -48,6 +48,22 @@ function mirip($keyword) {
     $parsed['info'] = $json['result']['result'];
     return $parsed;
 }
+function ahli($keyword) {
+    $uri = "https://farzain.com/api/ahli.php?name=" . $keyword . "&apikey=odu7493747dundjdjd";
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $parsed['pap']  = $json['result']['image'];
+    $parsed['info'] = $json['result']['result'];
+    return $parsed;
+}
+function liburan($keyword) {
+    $uri = "https://farzain.com/api/liburan.php?name=" . $keyword . "&apikey=odu7493747dundjdjd";
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $parsed['pap']  = $json['result']['image'];
+    $parsed['info'] = $json['result']['result'];
+    return $parsed;
+}
 function send($input, $rt){
     $send = array(
         'replyToken' => $rt,
@@ -345,20 +361,6 @@ if($message['type']=='text') {
     }
 }
 if($message['type']=='text') {
-    if ($command == '/mo') {
-        $parsed = mirip($options);
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                    'type' => 'text',
-                    'text' => $parsed['pap']
-                )
-            )
-        );
-    }
-}
-if($message['type']=='text') {
     if ($command == '/miripsiapa') {
         $parsed = mirip($options);
         $balas = array(
@@ -377,6 +379,74 @@ if($message['type']=='text') {
                                 'type' => 'message',
                                 'label' => 'Ucapkan Selamat',
                                 'text' => $options . ', Selamat ya. Muka mu emang pantes dengan dia...',
+                            ),
+                            1 => 
+                            array (
+                                'type' => 'uri',
+                                'label' => 'Lihat Gambar',
+                                'uri' => $parsed['pap'],
+                            ),
+                        ),
+                        'text' => $parsed['info'],
+                    ),
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/keahlian') {
+        $parsed = ahli($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array (
+                    'type' => 'template',
+                    'altText' => 'Keahlian seseorang',
+                    'template' => 
+                    array (
+                        'type' => 'buttons',
+                        'actions' => 
+                        array (
+                            0 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'Ucapkan Selamat',
+                                'text' => $options . ', Selamat ya. Luar biasa keahlianmu...',
+                            ),
+                            1 => 
+                            array (
+                                'type' => 'uri',
+                                'label' => 'Lihat Gambar',
+                                'uri' => $parsed['pap'],
+                            ),
+                        ),
+                        'text' => $parsed['info'],
+                    ),
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/liburan') {
+        $parsed = liburan($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array (
+                    'type' => 'template',
+                    'altText' => 'Liburan seseorang',
+                    'template' => 
+                    array (
+                        'type' => 'buttons',
+                        'actions' => 
+                        array (
+                            0 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'Ucapkan Selamat',
+                                'text' => 'Cie.. ' . $options . ' seneng pergi liburan',
                             ),
                             1 => 
                             array (
