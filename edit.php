@@ -344,6 +344,42 @@ if($message['type']=='text') {
         );
     }
 }
+if($message['type']=='text') {
+    if ($command == '/miripsiapa') {
+        $parsed = mirip($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array (
+                    'type' => 'template',
+                    'altText' => 'Mirip Siapakah Dia?',
+                    'template' => 
+                    array (
+                        'type' => 'buttons',
+                        'actions' => 
+                        array (
+                            0 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'Ucapkan Selamat',
+                                'text' => 'Selamat ya. Muka mu emang pantes dengan dia...',
+                            ),
+                            1 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'Ucapkan Selamat',
+                                'text' => 'Selamat ya. Muka mu emang pantes dengan dia...',
+                            ),
+                        ),
+                        'thumbnailImageUrl' => $parsed['pap'],
+                        'title' => 'Fitur Alat',
+                        'text' => $parsed['info'],
+                    ),
+                )
+            )
+        );
+    }
+}
 //=========ALAT===============
 if($message['type']=='text') {
     if ($command == '/alat') {
