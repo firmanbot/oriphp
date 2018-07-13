@@ -243,33 +243,68 @@ if($message['type']=='text') {
             'messages' => array(
                 array (
                     'type' => 'template',
-                    'altText' => '[ FGM BOT ] Hiburan',
+                    'altText' => 'this is a carousel template',
                     'template' => 
                     array (
-                        'type' => 'buttons',
+                        'type' => 'carousel',
                         'actions' => 
+                        array (
+                        ),
+                        'columns' => 
                         array (
                             0 => 
                             array (
-                                'type' => 'message',
-                                'label' => 'Kerang Ajaib',
-                                'text' => '/apakah<spasi><pesan>',
+                                'title' => 'Fitur Hiburan',
+                                'text' => 'Halaman 1',
+                                'actions' =>
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Kerang Ajaib',
+                                        'text' => '/apakah<spasi><teks>',
+                                    ),
+                                    1 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Penjawab Pertanyaan',
+                                        'text' => '/penjwbpertanyaan',
+                                    ),
+                                    2 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Persentase Mood',
+                                        'text' => '/mood<spasi><nama>',
+                                    ),
+                                ),
                             ),
                             1 => 
                             array (
-                                'type' => 'message',
-                                'label' => 'Penjawab Pertanyaan',
-                                'text' => '/penjwbpertanyaan',
-                            ),
-                            2 => 
-                            array (
-                                'type' => 'message',
-                                'label' => 'Presentase Mood',
-                                'text' => '/mood<spasi><nama>',
+                                'title' => 'Fitur Hiburan',
+                                'text' => 'Halaman 2',
+                                'actions' => 
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Mirip Siapa Dia?',
+                                        'text' => '/miripsiapa<spasi><nama>',
+                                    ),
+                                    1 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Keahlian',
+                                        'text' => '/keahlian<spasi><nama>',
+                                    ),
+                                    2 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Liburan',
+                                        'text' => '/liburan<spasi><nama>',
+                                    ),
+                                ),
                             ),
                         ),
-                        'title' => 'Fitur Hiburan',
-                        'text' => 'Lets Fun dengan Fitur ini.',
                     ),
                 )
             )
