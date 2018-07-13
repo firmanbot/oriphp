@@ -352,14 +352,14 @@ if($message['type']=='text') {
             'messages' => array(
                 array(
                     'type' => 'text',
-                    'text' => $parsed['info']
+                    'text' => $parsed['pap']
                 )
             )
         );
     }
 }
 if($message['type']=='text') {
-    if ($command == '/miripsiapa') {
+    if ($command == '/mirip') {
         $parsed = mirip($options);
         $balas = array(
             'replyToken' => $replyToken,
