@@ -345,6 +345,20 @@ if($message['type']=='text') {
     }
 }
 if($message['type']=='text') {
+    if ($command == '/mo') {
+        $parsed = mirip($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $parsed['info']
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
     if ($command == '/miripsiapa') {
         $parsed = mirip($options);
         $balas = array(
