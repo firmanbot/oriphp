@@ -972,11 +972,6 @@ if($message['type']=='text') {
 if($message['type']=='text') {
     if ($command == '/yt') {
         $parsed = youtube($options);
-	$judul1 = str_limit($parsed['judul1'],57);
-	$judul2 = str_limit($parsed['judul2'],57);
-	$judul3 = str_limit($parsed['judul3'],57);
-	$judul4 = str_limit($parsed['judul4'],57);
-	$judul5 = str_limit($parsed['judul5'],57);
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
@@ -994,20 +989,20 @@ if($message['type']=='text') {
                             0 => 
                             array (
                                 'thumbnailImageUrl' => $parsed['pap1'],
-                                'text' => $judul1,
+                                'text' => 'Video 1',
                                 'actions' =>
                                 array (
                                     0 => 
                                     array (
-                                        'type' => 'uri',
-                                        'label' => 'Buka Youtube',
-                                        'uri' => $parsed['url1'],
+                                        'type' => 'message',
+                                        'label' => 'Judul Video',
+                                        'text' => 'Video 1: ' . $parsed['judul1'],
                                     ),
                                     1 => 
                                     array (
-                                        'type' => 'message',
-                                        'label' => 'Penjawab Pertanyaan',
-                                        'text' => '/penjwbpertanyaan',
+                                        'type' => 'uri',
+                                        'label' => 'Buka Youtube',
+                                        'uri' => $parsed['url1'],
                                     ),
                                     2 => 
                                     array (
@@ -1020,20 +1015,20 @@ if($message['type']=='text') {
                             1 => 
                             array (
                                 'thumbnailImageUrl' => $parsed['pap2'],
-                                'text' => $judul2,
+                                'text' => 'Video 2',
                                 'actions' =>
                                 array (
                                     0 => 
                                     array (
-                                        'type' => 'uri',
-                                        'label' => 'Buka Youtube',
-                                        'uri' => $parsed['url2'],
+                                        'type' => 'message',
+                                        'label' => 'Judul Video',
+                                        'text' => 'Video 2: ' . $parsed['judul2'],
                                     ),
                                     1 => 
                                     array (
-                                        'type' => 'message',
-                                        'label' => 'Keahlian',
-                                        'text' => '/keahlian<spasi><nama>',
+                                        'type' => 'uri',
+                                        'label' => 'Buka Youtube',
+                                        'uri' => $parsed['url2'],
                                     ),
                                     2 => 
                                     array (
@@ -1046,20 +1041,20 @@ if($message['type']=='text') {
                             2 => 
                             array (
                                 'thumbnailImageUrl' => $parsed['pap3'],
-                                'text' => $judul3,
+                                'text' => 'Video 3',
                                 'actions' =>
                                 array (
                                     0 => 
                                     array (
-                                        'type' => 'uri',
-                                        'label' => 'Buka Youtube',
-                                        'uri' => $parsed['url3'],
+                                        'type' => 'message',
+                                        'label' => 'Judul Video',
+                                        'text' => 'Video 3: ' . $parsed['judul3'],
                                     ),
                                     1 => 
                                     array (
-                                        'type' => 'message',
-                                        'label' => 'Lacak Seseorang',
-                                        'text' => '/keahlian<spasi><nama>',
+                                        'type' => 'uri',
+                                        'label' => 'Buka Youtube',
+                                        'uri' => $parsed['url3'],
                                     ),
                                     2 => 
                                     array (
@@ -1072,20 +1067,20 @@ if($message['type']=='text') {
                             3 => 
                             array (
                                 'thumbnailImageUrl' => $parsed['pap4'],
-                                'text' => $judul4,
+                                'text' => 'Video 4',
                                 'actions' =>
                                 array (
                                     0 => 
                                     array (
-                                        'type' => 'uri',
-                                        'label' => 'Buka Youtube',
-                                        'uri' => $parsed['url4'],
+                                        'type' => 'message',
+                                        'label' => 'Judul Video',
+                                        'text' => 'Video 4: ' . $parsed['judul4'],
                                     ),
                                     1 => 
                                     array (
-                                        'type' => 'message',
-                                        'label' => 'Cek Tinggi Badan',
-                                        'text' => '/tinggi<spasi><nama>',
+                                        'type' => 'uri',
+                                        'label' => 'Buka Youtube',
+                                        'uri' => $parsed['url4'],
                                     ),
                                     2 => 
                                     array (
@@ -1098,20 +1093,20 @@ if($message['type']=='text') {
                             4 => 
                             array (
                                 'thumbnailImageUrl' => $parsed['pap5'],
-                                'text' => $judul5,
+                                'text' => 'Video 5',
                                 'actions' =>
                                 array (
                                     0 => 
                                     array (
-                                        'type' => 'uri',
-                                        'label' => 'Buka Youtube',
-                                        'uri' => $parsed['url5'],
+                                        'type' => 'message',
+                                        'label' => 'Judul Video',
+                                        'text' => 'Video 5: ' . $parsed['judul5'],
                                     ),
                                     1 => 
                                     array (
-                                        'type' => 'message',
-                                        'label' => 'Cek Nasib',
-                                        'text' => '/nasib<spasi><nama>',
+                                        'type' => 'uri',
+                                        'label' => 'Buka Youtube',
+                                        'uri' => $parsed['url5'],
                                     ),
                                     2 => 
                                     array (
