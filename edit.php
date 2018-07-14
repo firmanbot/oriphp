@@ -381,7 +381,6 @@ if($message['type']=='text') {
                         array (
                             0 => 
                             array (
-                                'title' => 'Fitur Hiburan',
                                 'text' => 'Halaman 1',
                                 'actions' =>
                                 array (
@@ -407,7 +406,6 @@ if($message['type']=='text') {
                             ),
                             1 => 
                             array (
-                                'title' => 'Fitur Hiburan',
                                 'text' => 'Halaman 2',
                                 'actions' => 
                                 array (
@@ -433,7 +431,6 @@ if($message['type']=='text') {
                             ),
                             2 => 
                             array (
-                                'title' => 'Fitur Hiburan',
                                 'text' => 'Halaman 3',
                                 'actions' => 
                                 array (
@@ -459,7 +456,6 @@ if($message['type']=='text') {
                             ),
                             3 => 
                             array (
-                                'title' => 'Fitur Hiburan',
                                 'text' => 'Halaman 4',
                                 'actions' => 
                                 array (
@@ -485,7 +481,6 @@ if($message['type']=='text') {
                             ),
                             4 => 
                             array (
-                                'title' => 'Fitur Hiburan',
                                 'text' => 'Halaman 5',
                                 'actions' => 
                                 array (
