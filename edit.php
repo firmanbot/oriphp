@@ -972,6 +972,11 @@ if($message['type']=='text') {
 if($message['type']=='text') {
     if ($command == '/yt') {
         $parsed = youtube($options);
+	$judul1 = str_limit($parsed['judul1'],57);
+	$judul2 = str_limit($parsed['judul2'],57);
+	$judul3 = str_limit($parsed['judul3'],57);
+	$judul4 = str_limit($parsed['judul4'],57);
+	$judul5 = str_limit($parsed['judul5'],57);
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
@@ -989,7 +994,7 @@ if($message['type']=='text') {
                             0 => 
                             array (
                                 'thumbnailImageUrl' => $parsed['pap1'],
-                                'text' => $parsed['judul1'],
+                                'text' => $judul1,
                                 'actions' =>
                                 array (
                                     0 => 
@@ -1015,7 +1020,7 @@ if($message['type']=='text') {
                             1 => 
                             array (
                                 'thumbnailImageUrl' => $parsed['pap2'],
-                                'text' => $parsed['judul2'],
+                                'text' => $judul2,
                                 'actions' =>
                                 array (
                                     0 => 
@@ -1041,7 +1046,7 @@ if($message['type']=='text') {
                             2 => 
                             array (
                                 'thumbnailImageUrl' => $parsed['pap3'],
-                                'text' => $parsed['judul3'],
+                                'text' => $judul3,
                                 'actions' =>
                                 array (
                                     0 => 
@@ -1067,7 +1072,7 @@ if($message['type']=='text') {
                             3 => 
                             array (
                                 'thumbnailImageUrl' => $parsed['pap4'],
-                                'text' => $parsed['judul4'],
+                                'text' => $judul4,
                                 'actions' =>
                                 array (
                                     0 => 
@@ -1093,7 +1098,7 @@ if($message['type']=='text') {
                             4 => 
                             array (
                                 'thumbnailImageUrl' => $parsed['pap5'],
-                                'text' => $parsed['judul5'],
+                                'text' => $judul5,
                                 'actions' =>
                                 array (
                                     0 => 
