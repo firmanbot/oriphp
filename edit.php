@@ -64,6 +64,32 @@ function liburan($keyword) {
     $parsed['info'] = $json['result']['result'];
     return $parsed;
 }
+function youtube($keyword) {
+    $uri = "https://farzain.com/api/yt_search.php?id=" . $keyword . "&apikey=odu7493747dundjdjd";
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $parsed['judul1']  = $json[0]['title'];
+    $parsed['url1'] = $json[0]['url'];
+    $parsed['pap1']  = $json[0]['videoThumbs'];
+    $parsed['id1']  = $json[0]['videoId'];
+    $parsed['judul2']  = $json[1]['title'];
+    $parsed['url2'] = $json[1]['url'];
+    $parsed['pap2']  = $json[1]['videoThumbs'];
+    $parsed['id2']  = $json[1]['videoId'];
+    $parsed['judul3']  = $json[2]['title'];
+    $parsed['url3'] = $json[2]['url'];
+    $parsed['pap3']  = $json[2]['videoThumbs'];
+    $parsed['id3']  = $json[2]['videoId'];
+    $parsed['judul4']  = $json[3]['title'];
+    $parsed['url4'] = $json[3]['url'];
+    $parsed['pap4']  = $json[3]['videoThumbs'];
+    $parsed['id4']  = $json[3]['videoId'];
+    $parsed['judul5']  = $json[4]['title'];
+    $parsed['url5'] = $json[4]['url'];
+    $parsed['pap5']  = $json[4]['videoThumbs'];
+    $parsed['id5']  = $json[4]['videoId'];
+    return $parsed;
+}
 function send($input, $rt){
     $send = array(
         'replyToken' => $rt,
@@ -937,6 +963,160 @@ if($message['type']=='text') {
                         'thumbnailImageUrl' => $parsed['poto'],
                         'title' => 'Info Profil IG',
                         'text' => $parsed['nama'],
+                    ),
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/yt') {
+        $parsed = youtube($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array (
+                    'type' => 'template',
+                    'altText' => 'Youtube Search',
+                    'template' => 
+                    array (
+                        'type' => 'carousel',
+                        'actions' => 
+                        array (
+                        ),
+                        'columns' => 
+                        array (
+                            0 => 
+                            array (
+                                'thumbnailImageUrl' => $parsed['pap1'],
+                                'text' => $parsed['judul1'],
+                                'actions' =>
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'uri',
+                                        'label' => 'Buka Youtube',
+                                        'uri' => $parsed['url1'],
+                                    ),
+                                    1 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Penjawab Pertanyaan',
+                                        'text' => '/penjwbpertanyaan',
+                                    ),
+                                    2 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Persentase Mood',
+                                        'text' => '/mood<spasi><nama>',
+                                    ),
+                                ),
+                            ),
+                            1 => 
+                            array (
+                                'thumbnailImageUrl' => $parsed['pap2'],
+                                'text' => $parsed['judul2'],
+                                'actions' =>
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'uri',
+                                        'label' => 'Buka Youtube',
+                                        'uri' => $parsed['url2'],
+                                    ),
+                                    1 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Keahlian',
+                                        'text' => '/keahlian<spasi><nama>',
+                                    ),
+                                    2 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Liburan',
+                                        'text' => '/liburan<spasi><nama>',
+                                    ),
+                                ),
+                            ),
+                            2 => 
+                            array (
+                                'thumbnailImageUrl' => $parsed['pap3'],
+                                'text' => $parsed['judul3'],
+                                'actions' =>
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'uri',
+                                        'label' => 'Buka Youtube',
+                                        'uri' => $parsed['url3'],
+                                    ),
+                                    1 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Lacak Seseorang',
+                                        'text' => '/keahlian<spasi><nama>',
+                                    ),
+                                    2 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Cek Cita-cita',
+                                        'text' => '/citacita<spasi><nama>',
+                                    ),
+                                ),
+                            ),
+                            3 => 
+                            array (
+                                'thumbnailImageUrl' => $parsed['pap4'],
+                                'text' => $parsed['judul4'],
+                                'actions' =>
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'uri',
+                                        'label' => 'Buka Youtube',
+                                        'uri' => $parsed['url4'],
+                                    ),
+                                    1 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Cek Tinggi Badan',
+                                        'text' => '/tinggi<spasi><nama>',
+                                    ),
+                                    2 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Cek Berat Badan',
+                                        'text' => '/berat<spasi><nama>',
+                                    ),
+                                ),
+                            ),
+                            4 => 
+                            array (
+                                'thumbnailImageUrl' => $parsed['pap5'],
+                                'text' => $parsed['judul5'],
+                                'actions' =>
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'uri',
+                                        'label' => 'Buka Youtube',
+                                        'uri' => $parsed['url5'],
+                                    ),
+                                    1 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Cek Nasib',
+                                        'text' => '/nasib<spasi><nama>',
+                                    ),
+                                    2 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Cek Hobi',
+                                        'text' => '/hobi<spasi><nama>',
+                                    ),
+                                ),
+                            ),
+                        ),
                     ),
                 )
             )
