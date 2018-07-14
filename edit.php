@@ -381,7 +381,7 @@ if($message['type']=='text') {
                         array (
                             0 => 
                             array (
-				'thumbnailImageUrl' => 'http://mirip.men/anu/26.jpg',
+				'thumbnailImageUrl' => 'https://i.ytimg.com/vi/u-mCBQBuO50/hqdefault.jpg',
                                 'text' => 'Halaman 1',
                                 'actions' =>
                                 array (
@@ -407,7 +407,7 @@ if($message['type']=='text') {
                             ),
                             1 => 
                             array (
-				'thumbnailImageUrl' => 'http://mirip.men/anu/26.jpg',
+				'thumbnailImageUrl' => 'https://i.ytimg.com/vi/u-mCBQBuO50/hqdefault.jpg',
                                 'text' => 'Halaman 2',
                                 'actions' => 
                                 array (
@@ -433,7 +433,7 @@ if($message['type']=='text') {
                             ),
                             2 => 
                             array (
-				'thumbnailImageUrl' => 'http://mirip.men/anu/26.jpg',
+				'thumbnailImageUrl' => 'https://i.ytimg.com/vi/u-mCBQBuO50/hqdefault.jpg',
                                 'text' => 'Halaman 3',
                                 'actions' => 
                                 array (
@@ -459,7 +459,7 @@ if($message['type']=='text') {
                             ),
                             3 => 
                             array (
-				'thumbnailImageUrl' => 'http://mirip.men/anu/26.jpg',
+				'thumbnailImageUrl' => 'https://i.ytimg.com/vi/u-mCBQBuO50/hqdefault.jpg',
                                 'text' => 'Halaman 4',
                                 'actions' => 
                                 array (
@@ -485,7 +485,7 @@ if($message['type']=='text') {
                             ),
                             4 => 
                             array (
-				'thumbnailImageUrl' => 'http://mirip.men/anu/26.jpg',
+				'thumbnailImageUrl' => 'https://i.ytimg.com/vi/u-mCBQBuO50/hqdefault.jpg',
                                 'text' => 'Halaman 5',
                                 'actions' => 
                                 array (
