@@ -972,7 +972,7 @@ if($message['type']=='text') {
                                     array (
                                         'type' => 'message',
                                         'label' => 'Url Shortner',
-                                        'text' => '/shorturl<spasi><nama app>',
+                                        'text' => '/shorturl<spasi><url>',
                                     ),
                                 ),
                             ),
