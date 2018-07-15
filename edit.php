@@ -90,6 +90,24 @@ function youtube($keyword) {
     $parsed['id5']  = $json[4]['videoId'];
     return $parsed;
 }
+function ytaud($keyword) {
+    $uri = "https://farzain.com/api/ytaudio.php?id=" . $keyword . "&apikey=odu7493747dundjdjd";
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $parsed['m4a']  = $json['result']['m4a'];
+    $parsed['webm'] = $json['result']['webm'];
+    return $parsed;
+}
+function ytvid($keyword) {
+    $uri = "https://farzain.com/api/yt_download.php?id=" . $keyword . "&apikey=odu7493747dundjdjd";
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $parsed['menu1']  = $json['urls'][0]['id'];
+    $parsed['judul1']  = $json['urls'][0]['label'];
+    $parsed['menu2']  = $json['urls'][1]['id'];
+    $parsed['judul2']  = $json['urls'][1]['label'];
+    return $parsed;
+}
 function send($input, $rt){
     $send = array(
         'replyToken' => $rt,
@@ -988,15 +1006,14 @@ if($message['type']=='text') {
                         array (
                             0 => 
                             array (
-                                'thumbnailImageUrl' => $parsed['pap1'],
-                                'text' => 'Video 1',
+                                'text' => $parsed['judul1'],
                                 'actions' =>
                                 array (
                                     0 => 
                                     array (
-                                        'type' => 'message',
-                                        'label' => 'Judul Video',
-                                        'text' => 'Video 1: ' . $parsed['judul1'],
+                                        'type' => 'uri',
+                                        'label' => 'Gambar Preview',
+                                        'uri' => $parsed['pap1'],
                                     ),
                                     1 => 
                                     array (
@@ -1007,22 +1024,21 @@ if($message['type']=='text') {
                                     2 => 
                                     array (
                                         'type' => 'message',
-                                        'label' => 'Persentase Mood',
-                                        'text' => '/mood<spasi><nama>',
+                                        'label' => 'Download',
+                                        'text' => '/dlyt ' . $parsed['id1'],
                                     ),
                                 ),
                             ),
                             1 => 
                             array (
-                                'thumbnailImageUrl' => $parsed['pap2'],
-                                'text' => 'Video 2',
+                                'text' => $parsed['judul2'],
                                 'actions' =>
                                 array (
                                     0 => 
                                     array (
-                                        'type' => 'message',
-                                        'label' => 'Judul Video',
-                                        'text' => 'Video 2: ' . $parsed['judul2'],
+                                        'type' => 'uri',
+                                        'label' => 'Gambar Preview',
+                                        'uri' => $parsed['pap2'],
                                     ),
                                     1 => 
                                     array (
@@ -1033,22 +1049,21 @@ if($message['type']=='text') {
                                     2 => 
                                     array (
                                         'type' => 'message',
-                                        'label' => 'Liburan',
-                                        'text' => '/liburan<spasi><nama>',
+                                        'label' => 'Download',
+                                        'text' => '/dlyt ' . $parsed['id2'],
                                     ),
                                 ),
                             ),
                             2 => 
                             array (
-                                'thumbnailImageUrl' => $parsed['pap3'],
-                                'text' => 'Video 3',
+                                'text' => $parsed['judul3'],
                                 'actions' =>
                                 array (
                                     0 => 
                                     array (
-                                        'type' => 'message',
-                                        'label' => 'Judul Video',
-                                        'text' => 'Video 3: ' . $parsed['judul3'],
+                                        'type' => 'uri',
+                                        'label' => 'Gambar Preview',
+                                        'uri' => $parsed['pap3'],
                                     ),
                                     1 => 
                                     array (
@@ -1059,22 +1074,21 @@ if($message['type']=='text') {
                                     2 => 
                                     array (
                                         'type' => 'message',
-                                        'label' => 'Cek Cita-cita',
-                                        'text' => '/citacita<spasi><nama>',
+                                        'label' => 'Download',
+                                        'text' => '/dlyt ' . $parsed['id3'],
                                     ),
                                 ),
                             ),
                             3 => 
                             array (
-                                'thumbnailImageUrl' => $parsed['pap4'],
-                                'text' => 'Video 4',
+                                'text' => $parsed['judul4'],
                                 'actions' =>
                                 array (
                                     0 => 
                                     array (
-                                        'type' => 'message',
-                                        'label' => 'Judul Video',
-                                        'text' => 'Video 4: ' . $parsed['judul4'],
+                                        'type' => 'uri',
+                                        'label' => 'Gambar Preview',
+                                        'uri' => $parsed['pap4'],
                                     ),
                                     1 => 
                                     array (
@@ -1085,22 +1099,21 @@ if($message['type']=='text') {
                                     2 => 
                                     array (
                                         'type' => 'message',
-                                        'label' => 'Cek Berat Badan',
-                                        'text' => '/berat<spasi><nama>',
+                                        'label' => 'Download',
+                                        'text' => '/dlyt ' . $parsed['id4'],
                                     ),
                                 ),
                             ),
                             4 => 
                             array (
-                                'thumbnailImageUrl' => $parsed['pap5'],
-                                'text' => 'Video 5',
+                                'text' => $parsed['judul5'],
                                 'actions' =>
                                 array (
                                     0 => 
                                     array (
-                                        'type' => 'message',
-                                        'label' => 'Judul Video',
-                                        'text' => 'Video 5: ' . $parsed['judul5'],
+                                        'type' => 'uri',
+                                        'label' => 'Gambar Preview',
+                                        'uri' => $parsed['pap5'],
                                     ),
                                     1 => 
                                     array (
@@ -1111,8 +1124,8 @@ if($message['type']=='text') {
                                     2 => 
                                     array (
                                         'type' => 'message',
-                                        'label' => 'Cek Hobi',
-                                        'text' => '/hobi<spasi><nama>',
+                                        'label' => 'Download',
+                                        'text' => '/dlyt ' . $parsed['id5'],
                                     ),
                                 ),
                             ),
@@ -1123,7 +1136,107 @@ if($message['type']=='text') {
         );
     }
 }
-
+if($message['type']=='text') {
+    if ($command == '/dlyt') {
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array (
+                    'type' => 'template',
+                    'altText' => 'Youtube Downloader',
+                    'template' => 
+                    array (
+                        'type' => 'confirm',
+                        'actions' => 
+                        array (
+                            0 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'Audio',
+                                'text' => '/ytaud ' . $options,
+                            ),
+                            1 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'Video',
+                                'text' => '/ytvid ' . $options,
+                            ),
+                        ),
+                        'text' => '[ Tipe Youtube Downloader ] Dalam bentuk apa?',
+                    ),
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/ytaud') {
+	$parsed = ytaud($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array (
+                    'type' => 'template',
+                    'altText' => 'Youtube Audio Dowloader',
+                    'template' => 
+                    array (
+                        'type' => 'buttons',
+                        'actions' => 
+                        array (
+                            0 => 
+                            array (
+                                'type' => 'uri',
+                                'label' => 'm4a',
+                                'uri' => $parsed['m4a'],
+                            ),
+                            1 => 
+                            array (
+                                'type' => 'uri',
+                                'label' => 'webm',
+                                'uri' => $parsed['webm'],
+                            ),
+                        ),
+                        'text' => 'Pilih format filenya...',
+                    ),
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/ytvid') {
+	$parsed = ytvid($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array (
+                    'type' => 'template',
+                    'altText' => 'Youtube Video Dowloader',
+                    'template' => 
+                    array (
+                        'type' => 'buttons',
+                        'actions' => 
+                        array (
+                            0 => 
+                            array (
+                                'type' => 'uri',
+                                'label' => $parsed['judul1'],
+                                'uri' => $parsed['menu1'],
+                            ),
+                            1 => 
+                            array (
+                                'type' => 'uri',
+                                'label' => $parsed['judul2'],
+                                'uri' => $parsed['menu2'],
+                            ),
+                        ),
+                        'text' => 'Pilih format filenya...',
+                    ),
+                )
+            )
+        );
+    }
+}
 if (isset($balas)) {
     $result = json_encode($balas);
 //$result = ob_get_clean();
