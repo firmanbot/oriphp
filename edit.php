@@ -1315,7 +1315,7 @@ if($message['type']=='text') {
             'messages' => array(
                 array(
                     'type' => 'text',
-                    'text' => 'Jadwal acara tv ' . $options . '\n========' . $parsed['tv']
+                    'text' => 'Jadwal acara tv ' . $options . $parsed['tv']
                 )
             )
         );
