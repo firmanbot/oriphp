@@ -136,6 +136,13 @@ function playstore($keyword) {
     $parsed['icon5']  = $json[4]['icon'];
     return $parsed;
 }
+function urlshort($keyword) {
+    $uri = "https://farzain.com/api/url.php?id=" . $keyword . "&apikey=odu7493747dundjdjd";
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $parsed['url']  = $json['url'];
+    return $parsed;
+}
 function send($input, $rt){
     $send = array(
         'replyToken' => $rt,
@@ -964,8 +971,8 @@ if($message['type']=='text') {
                                     2 => 
                                     array (
                                         'type' => 'message',
-                                        'label' => 'Playstore Search',
-                                        'text' => '/playstore<spasi><nama app>',
+                                        'label' => 'Url Shortner',
+                                        'text' => '/shorturl<spasi><nama app>',
                                     ),
                                 ),
                             ),
@@ -1308,7 +1315,21 @@ if($message['type']=='text') {
             'messages' => array(
                 array(
                     'type' => 'text',
-                    'text' => 'Jadwal acara tv ' . $options . $parsed['tv']
+                    'text' => 'Jadwal acara tv ' . $options . '\n========' . $parsed['tv']
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/shorturl') {
+	$parsed = urlshort($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $parsed['url']
                 )
             )
         );
