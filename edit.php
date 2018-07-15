@@ -108,6 +108,34 @@ function ytvid($keyword) {
     $parsed['judul2']  = $json['urls'][1]['label'];
     return $parsed;
 }
+function tv($keyword) {
+    $uri = "https://farzain.com/api/acaratv.php?id=" . $keyword . "&apikey=odu7493747dundjdjd";
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $parsed['tv']  = $json['result'];
+    return $parsed;
+}
+function playstore($keyword) {
+    $uri = "https://farzain.com/api/playstore.php?id=" . $keyword . "&apikey=odu7493747dundjdjd";
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $parsed['judul1']  = $json[0]['title'];
+    $parsed['url1']  = $json[0]['url'];
+    $parsed['icon1']  = $json[0]['icon'];
+    $parsed['judul2']  = $json[1]['title'];
+    $parsed['url2']  = $json[1]['url'];
+    $parsed['icon2']  = $json[1]['icon'];
+    $parsed['judul3']  = $json[2]['title'];
+    $parsed['url3']  = $json[2]['url'];
+    $parsed['icon3']  = $json[2]['icon'];
+    $parsed['judul4']  = $json[3]['title'];
+    $parsed['url4']  = $json[3]['url'];
+    $parsed['icon4']  = $json[3]['icon'];
+    $parsed['judul5']  = $json[4]['title'];
+    $parsed['url5']  = $json[4]['url'];
+    $parsed['icon5']  = $json[4]['icon'];
+    return $parsed;
+}
 function send($input, $rt){
     $send = array(
         'replyToken' => $rt,
@@ -883,30 +911,65 @@ if($message['type']=='text') {
                     'altText' => '[ FGM BOT ] Alat',
                     'template' => 
                     array (
-                        'type' => 'buttons',
+                        'type' => 'carousel',
                         'actions' => 
+                        array (
+                        ),
+                        'columns' => 
                         array (
                             0 => 
                             array (
-                                'type' => 'message',
-                                'label' => 'Url ID Line',
-                                'text' => '/idl<spasi><Id line>',
+				'title' => 'Fitur Alat',
+                                'text' => 'Halaman 1',
+                                'actions' =>
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Cek Profil IG',
+                                        'text' => '/ig<spasi><username>',
+                                    ),
+                                    1 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Url Chat WA',
+                                        'text' => '/chatwa',
+                                    ),
+                                    2 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Url ID Line',
+                                        'text' => '/idl<spasi><id line>',
+                                    ),
+                                ),
                             ),
                             1 => 
                             array (
-                                'type' => 'message',
-                                'label' => 'Url Chat WA',
-                                'text' => '/chatwa',
-                            ),
-                            2 => 
-                            array (
-                                'type' => 'message',
-                                'label' => 'Cek Profil IG',
-                                'text' => '/ig<spasi><username>',
+				'title' => 'Fitur Alat',
+                                'text' => 'Halaman 2',
+                                'actions' => 
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Youtube Search',
+                                        'text' => '/yt<spasi><judul>',
+                                    ),
+                                    1 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Jadwal Acara TV',
+                                        'text' => '/tv<spasi><nama channel>',
+                                    ),
+                                    2 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Playstore Search',
+                                        'text' => '/playstore<spasi><nama app>',
+                                    ),
+                                ),
                             ),
                         ),
-                        'title' => 'Fitur Alat',
-                        'text' => 'Utilitas yang dapat memudahkan pekerjaan Anda',
                     ),
                 )
             )
@@ -1231,6 +1294,114 @@ if($message['type']=='text') {
                             ),
                         ),
                         'text' => 'Pilih format filenya...',
+                    ),
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/tv') {
+	$parsed = tv($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'Jadwal acara tv ' . $options . $parsed['tv']
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/playstore') {
+        $parsed = playstore($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array (
+                    'type' => 'template',
+                    'altText' => 'Playstore App Search',
+                    'template' => 
+                    array (
+                        'type' => 'carousel',
+                        'actions' => 
+                        array (
+                        ),
+                        'columns' => 
+                        array (
+                            0 => 
+                            array (
+				'thumbnailImageUrl' => $parsed['icon1'],
+                                'text' => $parsed['judul1'],
+                                'actions' =>
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'uri',
+                                        'label' => 'Download',
+                                        'uri' => $parsed['url1'],
+                                    ),
+                                ),
+                            ),
+                            1 => 
+                            array (
+				'thumbnailImageUrl' => $parsed['icon2'],
+                                'text' => $parsed['judul2'],
+                                'actions' =>
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'uri',
+                                        'label' => 'Download',
+                                        'uri' => $parsed['url2'],
+                                    ),
+                                ),
+                            ),
+                            2 => 
+                            array (
+				'thumbnailImageUrl' => $parsed['icon3'],
+                                'text' => $parsed['judul3'],
+                                'actions' =>
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'uri',
+                                        'label' => 'Download',
+                                        'uri' => $parsed['url3'],
+                                    ),
+                                ),
+                            ),
+                            3 => 
+                            array (
+				'thumbnailImageUrl' => $parsed['icon4'],
+                                'text' => $parsed['judul4'],
+                                'actions' =>
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'uri',
+                                        'label' => 'Download',
+                                        'uri' => $parsed['url4'],
+                                    ),
+                                ),
+                            ),
+                            4 => 
+                            array (
+				'thumbnailImageUrl' => $parsed['icon5'],
+                                'text' => $parsed['judul5'],
+                                'actions' =>
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'uri',
+                                        'label' => 'Download',
+                                        'uri' => $parsed['url5'],
+                                    ),
+                                ),
+                            ),
+                        ),
                     ),
                 )
             )
