@@ -64,6 +64,85 @@ function liburan($keyword) {
     $parsed['info'] = $json['result']['result'];
     return $parsed;
 }
+function youtube($keyword) {
+    $uri = "https://farzain.com/api/yt_search.php?id=" . $keyword . "&apikey=odu7493747dundjdjd";
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $parsed['judul1']  = $json[0]['title'];
+    $parsed['url1'] = $json[0]['url'];
+    $parsed['pap1']  = $json[0]['videoThumbs'];
+    $parsed['id1']  = $json[0]['videoId'];
+    $parsed['judul2']  = $json[1]['title'];
+    $parsed['url2'] = $json[1]['url'];
+    $parsed['pap2']  = $json[1]['videoThumbs'];
+    $parsed['id2']  = $json[1]['videoId'];
+    $parsed['judul3']  = $json[2]['title'];
+    $parsed['url3'] = $json[2]['url'];
+    $parsed['pap3']  = $json[2]['videoThumbs'];
+    $parsed['id3']  = $json[2]['videoId'];
+    $parsed['judul4']  = $json[3]['title'];
+    $parsed['url4'] = $json[3]['url'];
+    $parsed['pap4']  = $json[3]['videoThumbs'];
+    $parsed['id4']  = $json[3]['videoId'];
+    $parsed['judul5']  = $json[4]['title'];
+    $parsed['url5'] = $json[4]['url'];
+    $parsed['pap5']  = $json[4]['videoThumbs'];
+    $parsed['id5']  = $json[4]['videoId'];
+    return $parsed;
+}
+function ytaud($keyword) {
+    $uri = "https://farzain.com/api/ytaudio.php?id=" . $keyword . "&apikey=odu7493747dundjdjd";
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $parsed['m4a']  = $json['result']['m4a'];
+    $parsed['webm'] = $json['result']['webm'];
+    return $parsed;
+}
+function ytvid($keyword) {
+    $uri = "https://farzain.com/api/yt_download.php?id=" . $keyword . "&apikey=odu7493747dundjdjd";
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $parsed['menu1']  = $json['urls'][0]['id'];
+    $parsed['judul1']  = $json['urls'][0]['label'];
+    $parsed['menu2']  = $json['urls'][1]['id'];
+    $parsed['judul2']  = $json['urls'][1]['label'];
+    return $parsed;
+}
+function tv($keyword) {
+    $uri = "https://farzain.com/api/acaratv.php?id=" . $keyword . "&apikey=odu7493747dundjdjd";
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $parsed['tv']  = $json['result'];
+    return $parsed;
+}
+function playstore($keyword) {
+    $uri = "https://farzain.com/api/playstore.php?id=" . $keyword . "&apikey=odu7493747dundjdjd";
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $parsed['judul1']  = $json[0]['title'];
+    $parsed['url1']  = $json[0]['url'];
+    $parsed['icon1']  = $json[0]['icon'];
+    $parsed['judul2']  = $json[1]['title'];
+    $parsed['url2']  = $json[1]['url'];
+    $parsed['icon2']  = $json[1]['icon'];
+    $parsed['judul3']  = $json[2]['title'];
+    $parsed['url3']  = $json[2]['url'];
+    $parsed['icon3']  = $json[2]['icon'];
+    $parsed['judul4']  = $json[3]['title'];
+    $parsed['url4']  = $json[3]['url'];
+    $parsed['icon4']  = $json[3]['icon'];
+    $parsed['judul5']  = $json[4]['title'];
+    $parsed['url5']  = $json[4]['url'];
+    $parsed['icon5']  = $json[4]['icon'];
+    return $parsed;
+}
+function urlshort($keyword) {
+    $uri = "https://farzain.com/api/url.php?id=" . $keyword . "&apikey=odu7493747dundjdjd";
+    $response = Unirest\Request::get("$uri");
+    $json = json_decode($response->raw_body, true);
+    $parsed['url']  = $json['url'];
+    return $parsed;
+}
 function send($input, $rt){
     $send = array(
         'replyToken' => $rt,
@@ -370,7 +449,7 @@ if($message['type']=='text') {
             'messages' => array(
                 array (
                     'type' => 'template',
-                    'altText' => 'this is a carousel template',
+                    'altText' => '[ FGM BOT ] Hiburan',
                     'template' => 
                     array (
                         'type' => 'carousel',
@@ -839,30 +918,65 @@ if($message['type']=='text') {
                     'altText' => '[ FGM BOT ] Alat',
                     'template' => 
                     array (
-                        'type' => 'buttons',
+                        'type' => 'carousel',
                         'actions' => 
+                        array (
+                        ),
+                        'columns' => 
                         array (
                             0 => 
                             array (
-                                'type' => 'message',
-                                'label' => 'Url ID Line',
-                                'text' => '/idl<spasi><Id line>',
+				'title' => 'Fitur Alat',
+                                'text' => 'Halaman 1',
+                                'actions' =>
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Cek Profil IG',
+                                        'text' => '/ig<spasi><username>',
+                                    ),
+                                    1 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Url Chat WA',
+                                        'text' => '/chatwa',
+                                    ),
+                                    2 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Url ID Line',
+                                        'text' => '/idl<spasi><id line>',
+                                    ),
+                                ),
                             ),
                             1 => 
                             array (
-                                'type' => 'message',
-                                'label' => 'Url Chat WA',
-                                'text' => '/chatwa',
-                            ),
-                            2 => 
-                            array (
-                                'type' => 'message',
-                                'label' => 'Cek Profil IG',
-                                'text' => '/ig<spasi><username>',
+				'title' => 'Fitur Alat',
+                                'text' => 'Halaman 2',
+                                'actions' => 
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Youtube Search',
+                                        'text' => '/yt<spasi><judul>',
+                                    ),
+                                    1 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Jadwal Acara TV',
+                                        'text' => '/tv<spasi><nama channel>',
+                                    ),
+                                    2 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Url Shortner',
+                                        'text' => '/shorturl<spasi><url>',
+                                    ),
+                                ),
                             ),
                         ),
-                        'title' => 'Fitur Alat',
-                        'text' => 'Utilitas yang dapat memudahkan pekerjaan Anda',
                     ),
                 )
             )
@@ -938,6 +1052,284 @@ if($message['type']=='text') {
                         'title' => 'Info Profil IG',
                         'text' => $parsed['nama'],
                     ),
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/yt') {
+        $parsed = youtube($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array (
+                    'type' => 'template',
+                    'altText' => 'Youtube Search',
+                    'template' => 
+                    array (
+                        'type' => 'carousel',
+                        'actions' => 
+                        array (
+                        ),
+                        'columns' => 
+                        array (
+                            0 => 
+                            array (
+                                'text' => $parsed['judul1'],
+                                'actions' =>
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'uri',
+                                        'label' => 'Gambar Preview',
+                                        'uri' => $parsed['pap1'],
+                                    ),
+                                    1 => 
+                                    array (
+                                        'type' => 'uri',
+                                        'label' => 'Buka Youtube',
+                                        'uri' => $parsed['url1'],
+                                    ),
+                                    2 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Download',
+                                        'text' => '/dlyt ' . $parsed['id1'],
+                                    ),
+                                ),
+                            ),
+                            1 => 
+                            array (
+                                'text' => $parsed['judul2'],
+                                'actions' =>
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'uri',
+                                        'label' => 'Gambar Preview',
+                                        'uri' => $parsed['pap2'],
+                                    ),
+                                    1 => 
+                                    array (
+                                        'type' => 'uri',
+                                        'label' => 'Buka Youtube',
+                                        'uri' => $parsed['url2'],
+                                    ),
+                                    2 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Download',
+                                        'text' => '/dlyt ' . $parsed['id2'],
+                                    ),
+                                ),
+                            ),
+                            2 => 
+                            array (
+                                'text' => $parsed['judul3'],
+                                'actions' =>
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'uri',
+                                        'label' => 'Gambar Preview',
+                                        'uri' => $parsed['pap3'],
+                                    ),
+                                    1 => 
+                                    array (
+                                        'type' => 'uri',
+                                        'label' => 'Buka Youtube',
+                                        'uri' => $parsed['url3'],
+                                    ),
+                                    2 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Download',
+                                        'text' => '/dlyt ' . $parsed['id3'],
+                                    ),
+                                ),
+                            ),
+                            3 => 
+                            array (
+                                'text' => $parsed['judul4'],
+                                'actions' =>
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'uri',
+                                        'label' => 'Gambar Preview',
+                                        'uri' => $parsed['pap4'],
+                                    ),
+                                    1 => 
+                                    array (
+                                        'type' => 'uri',
+                                        'label' => 'Buka Youtube',
+                                        'uri' => $parsed['url4'],
+                                    ),
+                                    2 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Download',
+                                        'text' => '/dlyt ' . $parsed['id4'],
+                                    ),
+                                ),
+                            ),
+                            4 => 
+                            array (
+                                'text' => $parsed['judul5'],
+                                'actions' =>
+                                array (
+                                    0 => 
+                                    array (
+                                        'type' => 'uri',
+                                        'label' => 'Gambar Preview',
+                                        'uri' => $parsed['pap5'],
+                                    ),
+                                    1 => 
+                                    array (
+                                        'type' => 'uri',
+                                        'label' => 'Buka Youtube',
+                                        'uri' => $parsed['url5'],
+                                    ),
+                                    2 => 
+                                    array (
+                                        'type' => 'message',
+                                        'label' => 'Download',
+                                        'text' => '/dlyt ' . $parsed['id5'],
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/dlyt') {
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array (
+                    'type' => 'template',
+                    'altText' => 'Youtube Downloader',
+                    'template' => 
+                    array (
+                        'type' => 'confirm',
+                        'actions' => 
+                        array (
+                            0 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'Audio',
+                                'text' => '/ytaud ' . $options,
+                            ),
+                            1 => 
+                            array (
+                                'type' => 'message',
+                                'label' => 'Video',
+                                'text' => '/ytvid ' . $options,
+                            ),
+                        ),
+                        'text' => '[ Tipe Youtube Downloader ] Dalam bentuk apa?',
+                    ),
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/ytaud') {
+	$parsed = ytaud($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array (
+                    'type' => 'template',
+                    'altText' => 'Youtube Audio Dowloader',
+                    'template' => 
+                    array (
+                        'type' => 'buttons',
+                        'actions' => 
+                        array (
+                            0 => 
+                            array (
+                                'type' => 'uri',
+                                'label' => 'm4a',
+                                'uri' => $parsed['m4a'],
+                            ),
+                            1 => 
+                            array (
+                                'type' => 'uri',
+                                'label' => 'webm',
+                                'uri' => $parsed['webm'],
+                            ),
+                        ),
+                        'text' => 'Hasil ditemukan. Silahkan pilih format filenya...',
+                    ),
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/ytvid') {
+	$parsed = ytvid($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array (
+                    'type' => 'template',
+                    'altText' => 'Youtube Video Dowloader',
+                    'template' => 
+                    array (
+                        'type' => 'buttons',
+                        'actions' => 
+                        array (
+                            0 => 
+                            array (
+                                'type' => 'uri',
+                                'label' => $parsed['judul1'],
+                                'uri' => $parsed['menu1'],
+                            ),
+                            1 => 
+                            array (
+                                'type' => 'uri',
+                                'label' => $parsed['judul2'],
+                                'uri' => $parsed['menu2'],
+                            ),
+                        ),
+                        'text' => 'Hasil ditemukan. Silahkan pilih format filenya...',
+                    ),
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/tv') {
+	$parsed = tv($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'Jadwal acara tv ' . $options . $parsed['tv']
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == '/shorturl') {
+	$parsed = urlshort($options);
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => $parsed['url']
                 )
             )
         );
