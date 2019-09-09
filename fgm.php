@@ -611,7 +611,6 @@ if($message['type']=='text') {
 }
 if($message['type']=='text') {
     if ($command == 'gcid') {
-        $result = jawabs($options);
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
