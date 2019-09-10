@@ -2,7 +2,7 @@
 /*
 just for fun
 */
-echo "Halo";
+echo time();
 require_once('./line_class.php');
 require_once('./unirest-php-master/src/Unirest.php');
 $channelAccessToken = 'QCSmtoMW5dMEHbGBxliQK9tXGaMSigvEReahesM45B7dhYXYlV3KZSGC2dOFhYfy4bk10kGWSF6J6KiY3BYLDv2h3Kep+3B1jLVQ13+p2oZSXpI34uH2M3BGiATkCK3iWO/uvj2aD03/+R+Ua3cvhlGUYhWQfeY8sLGRXgo3xvw='; //sesuaikan
