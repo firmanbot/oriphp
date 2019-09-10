@@ -2,7 +2,7 @@
 /*
 just for fun
 */
-
+echo "Halo";
 require_once('./line_class.php');
 require_once('./unirest-php-master/src/Unirest.php');
 $channelAccessToken = 'QCSmtoMW5dMEHbGBxliQK9tXGaMSigvEReahesM45B7dhYXYlV3KZSGC2dOFhYfy4bk10kGWSF6J6KiY3BYLDv2h3Kep+3B1jLVQ13+p2oZSXpI34uH2M3BGiATkCK3iWO/uvj2aD03/+R+Ua3cvhlGUYhWQfeY8sLGRXgo3xvw='; //sesuaikan
@@ -20,7 +20,7 @@ $pesan_datang = explode(" ", $message['text']);
 $msg_type = $message['type'];
 $command = $pesan_datang[0];
 $options = $pesan_datang[1];
-echo "INI WEB";
+
 if (count($pesan_datang) > 2) {
     for ($i = 2; $i < count($pesan_datang); $i++) {
         $options .= '+';
