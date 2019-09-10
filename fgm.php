@@ -2,7 +2,7 @@
 /*
 just for fun
 */
-echo time();
+$mulai = time();
 require_once('./line_class.php');
 require_once('./unirest-php-master/src/Unirest.php');
 $channelAccessToken = 'QCSmtoMW5dMEHbGBxliQK9tXGaMSigvEReahesM45B7dhYXYlV3KZSGC2dOFhYfy4bk10kGWSF6J6KiY3BYLDv2h3Kep+3B1jLVQ13+p2oZSXpI34uH2M3BGiATkCK3iWO/uvj2aD03/+R+Ua3cvhlGUYhWQfeY8sLGRXgo3xvw='; //sesuaikan
@@ -619,6 +619,19 @@ if($message['type']=='text') {
                 array(
                     'type' => 'text',
                     'text' => $groupId
+                )
+            )
+        );
+    }
+}
+if($message['type']=='text') {
+    if ($command == 'sp') {
+        $balas = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => time() - $mulai
                 )
             )
         );
