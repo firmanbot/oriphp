@@ -20,7 +20,7 @@ $pesan_datang = explode(" ", $message['text']);
 $msg_type = $message['type'];
 $command = $pesan_datang[0];
 $options = $pesan_datang[1];
-echo $replyToken;
+echo time();
 if (count($pesan_datang) > 2) {
     for ($i = 2; $i < count($pesan_datang); $i++) {
         $options .= '+';
