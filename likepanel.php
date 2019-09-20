@@ -101,7 +101,7 @@ if($message['type']=='text') {
     }
 }
 if($message['type']=='text') {
-    if ($command == 'likepost') {
+    if ($command1 == 'likepost') {
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
