@@ -22,12 +22,12 @@ $command = $pesan_datang[0];
 //$command1 = $pesan_datang1[0];
 $options = $pesan_datang[1];
 
-if (count($pesan_datang) > 2) {
-    for ($i = 2; $i < count($pesan_datang); $i++) {
-        $options .= '+';
-        $options .= $pesan_datang[$i];
-    }
-}
+//if (count($pesan_datang) > 2) {
+//    for ($i = 2; $i < count($pesan_datang); $i++) {
+//        $options .= '+';
+//        $options .= $pesan_datang[$i];
+//    }
+//}
 #-------------------------[Function]-------------------------#
 #-------------------------[Function]-------------------------#
 # require_once('./src/function/search-1.php');
