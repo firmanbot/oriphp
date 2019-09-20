@@ -15,8 +15,8 @@ $type 		= $client->parseEvents()[0]['type'];
 $message 	= $client->parseEvents()[0]['message'];
 $messageid 	= $client->parseEvents()[0]['message']['id'];
 $profil = $client->profil($userId);
-$pesan_datang = explode("like", $message['text']);
-//$pesan_datang1 = explode(" ", $message['text'])
+//$pesan_datang = explode("like", $message['text']);
+$pesan_datang = explode(" ", $message['text']);
 $msg_type = $message['type'];
 $command = $pesan_datang[0];
 //$command1 = $pesan_datang1[0];
@@ -36,7 +36,7 @@ if (count($pesan_datang) > 2) {
 # require_once('./src/function/search-2.php');
 # require_once('./src/function/hard.php');
 if ($type == 'join') {
-    $text = "Thx telah di undang ke grup. ketik like ya...\n\nLINE LIKE PANEL. Present By CF Virtual Bots\n\nTeam Support\n# FGM Bots\n#HTB TeamBot";
+    $text = "Thx telah di undang ke grup. ketik like ya... Present By CF Virtual Bots";
     $balas = array(
         'replyToken' => $replyToken,
         'messages' => array(
