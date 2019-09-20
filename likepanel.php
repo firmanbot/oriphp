@@ -16,10 +16,10 @@ $message 	= $client->parseEvents()[0]['message'];
 $messageid 	= $client->parseEvents()[0]['message']['id'];
 $profil = $client->profil($userId);
 $pesan_datang = explode("like", $message['text'])
-$pesan_datang1 = explode(" ", $message['text'])
+//$pesan_datang1 = explode(" ", $message['text'])
 $msg_type = $message['type'];
 $command = $pesan_datang[0];
-$command1 = $pesan_datang1[0];
+//$command1 = $pesan_datang1[0];
 $options = $pesan_datang[1];
 
 if (count($pesan_datang) > 2) {
@@ -100,19 +100,19 @@ if($message['type']=='text') {
         );
     }
 }
-if($message['type']=='text') {
-    if ($command1 == 'likepost') {
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                    'type' => 'text',
-                    'text' => 'Silahkan kirim postnya kaka...'
-                )
-            )
-        );
-    }
-}
+//if($message['type']=='text') {
+//    if ($command1 == 'likepost') {
+//        $balas = array(
+//            'replyToken' => $replyToken,
+//            'messages' => array(
+//                array(
+//                   'type' => 'text',
+//                    'text' => 'Silahkan kirim postnya kaka...'
+//                )
+//            )
+//        );
+//    }
+//}
 if (isset($balas)) {
     $result = json_encode($balas);
 //$result = ob_get_clean();
